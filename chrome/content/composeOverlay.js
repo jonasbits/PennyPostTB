@@ -18,6 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * static globals, need to be initialized only once
+ */
+var sPrefs = null;
+
+// First get the preferences service
+//taken from example at https://developer.mozilla.org/en/Code_snippets/Preferences
+try {
+var sPrefs = Components.classes["@mozilla.org/preferences-service;1"]
+                    .getService(Components.interfaces.nsIPrefBranch);
+}
+catch (ex) {
+ dump("failed to preferences services\n");
+} 
+ 
+ 
 //Uses: ppost.js
 
 //Globals
