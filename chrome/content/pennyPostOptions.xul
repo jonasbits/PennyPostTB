@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	Penny Post - A postage system for email
+	Copyright (C) 2007  Aliasgar Lokhandwala <d7@freepgs.com> 
+	http://pennypost.sourceforge.net/
+	
+	pennyPostOptions.xul: Preferences window
+	
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://ppost/locale/ppost.dtd">
+
+<prefwindow id="appPreferences"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&ppost.opt.title;" ondialogaccept="return onValidate();"
+	buttons="accept,cancel">
+
+
+	<prefpane id="msGen" label="&ppost.opt.gensettings;"
+		image="chrome://ppost/skin/general.png">
+		<preferences>
+			<preference id="ppost.defalgo" name="ppost.defalgo"
+				type="string">
+			</preference>
+			<preference id="mail.headerScroll.maxheight"
+				name="mail.headerScroll.maxheight" type="int">
+			</preference>
+			<preference id="ppost.maxagedays" name="ppost.maxagedays"
+				type="int">
+			</preference>
+			<preference id="ppost.skip_date_verification2"
+				name="ppost.skip_date_verification2" type="bool">
+			</preference>
+			<preference id="ppost.addheaderscroll"
+				name="ppost.addheaderscroll" type="bool">
+			</preference>
+			<preference id="ppost.addsignature"
+				name="ppost.addsignature" type="bool">
+			</preference>
+			<preference id="ppost.automarkjunk"
+				name="ppost.automarkjunk" type="bool">
+			</preference>
+		</preferences>
+		<vbox>
+			<groupbox align="center">
+				<text class="text-link" value="&ppost.opt.verhist; : 1.4"
+					onclick="window.opener.openURL('http://pennypost.sourceforge.net/TBVersionHistory');"
+					flex="1">
+				</text>
+			</groupbox>
+			<groupbox>
+				<caption label="&ppost.stamp.opt;"></caption>
+				<hbox align="center">
+					<label value="&ppost.opt.defalgo;:"></label>
+					<menulist preference="ppost.defalgo"
+						id="ppost.defalgo">
+						<menupopup>
+							<menuitem label="MBound" value="mbound"></menuitem>
+							<menuitem label="HashCash"
+								value="hashcash">
+							</menuitem>
+						</menupopup>
+					</menulist>
+				</hbox>
+				<hbox align="center">
+					<label value="&ppost.opt.stamp_age_label;:"></label>
+					<menulist preference="ppost.maxagedays"
+						tooltiptext="&ppost.opt.stamp_age_tip;">
+						<menupopup>
+							<menuitem label="1" value="1"></menuitem>
+							<menuitem label="2" value="2"></menuitem>
+							<menuitem label="3" value="3"></menuitem>
+							<menuitem label="4" value="4"></menuitem>
+							<menuitem label="5" value="5"></menuitem>
+						</menupopup>
+					</menulist>
+				</hbox>
+				<hbox align="center">
+					<checkbox id="ppost.automarkjunk"
+						preference="ppost.automarkjunk" label="&ppost.automarkjunk;"
+						accesskey="&ppost.automarkjunk.key;"
+						tooltiptext="&ppost.automarkjunk.tip;">
+					</checkbox>
+				</hbox>
+				<hbox align="center">
+					<checkbox id="ppost.skip_date_verification2"
+						preference="ppost.skip_date_verification2"
+						label="&ppost.opt.skipdateveri;"
+						accesskey="&ppost.opt.skipdateveri.key;"
+						tooltiptext="&ppost.opt.skipdateveri.tip;">
+					</checkbox>
+				</hbox>
+
+			</groupbox>
+			<groupbox>
+				<caption label="&ppost.opt.other;"></caption>
+				<hbox align="center">
+					<checkbox id="ppost.addheaderscroll"
+						preference="ppost.addheaderscroll"
+						label="&ppost.opt.addheaderscroll;"
+						accesskey="&ppost.opt.addheaderscroll.key;"
+						tooltiptext="&ppost.opt.addheaderscroll.tip;">
+					</checkbox>
+				</hbox>
+				<hbox align="center">
+					<label value="&ppost.opt.other.paneht;:"></label>
+					<textbox preference="mail.headerScroll.maxheight"
+						size="3">
+					</textbox>
+				</hbox>
+				<hbox align="center">
+					<checkbox id="ppost.addsignature"
+						preference="ppost.addsignature" label="&ppost.addsignature;"
+						accesskey="&ppost.addsignature.key;"
+						tooltiptext="&ppost.addsignature.tip;">
+					</checkbox>
+				</hbox>
+			</groupbox>
+			<groupbox align="center">
+				<text class="text-link" value="&ppost.opt.ad;"
+					onclick="window.opener.openURL('http://pennypost.sourceforge.net/ThunderBirdExtensionQuickConfiguration');"
+					flex="1">
+				</text>
+			</groupbox>
+		</vbox>
+	</prefpane>
+
+	<prefpane id="msEmail" label="&ppost.opt.emailsetup.tab;"
+		image="chrome://ppost/skin/mail.png">
+		<preferences>
+			<preference id="ppost.myemail" name="ppost.myemail"
+				type="string">
+			</preference>
+		</preferences>
+		<vbox>
+
+			<groupbox>
+				<caption label="&ppost.opt.emailsetup;"></caption>
+				<vbox>
+					<label value="&ppost.opt.emails;:"></label>
+					<textbox preference="ppost.myemail"></textbox>
+					<separator class="thin" />
+					<label value="&ppost.opt.emails.help1;"></label>
+					<label value="&ppost.opt.emails.help2;"></label>
+				</vbox>
+			</groupbox>
+
+			<groupbox>
+				<caption label="&ppost.opt.regexsetup;"></caption>
+				<label value="&ppost.regex.help;"></label>
+				<hbox>
+					<vbox>
+
+						<separator class="thin" />
+						<hbox align="center">
+							<label value="&ppost.regex.expn;:"></label>
+							<textbox id="ppost.regex.expn.box"
+								size="20">
+							</textbox>
+						</hbox>
+						<hbox align="center">
+							<label value="&ppost.regex.string;:"></label>
+							<textbox id="ppost.regex.string.box"
+								size="40">
+							</textbox>
+						</hbox>
+					</vbox>
+					<separator class="thin" />
+					<button id="testRegEx" label="&ppost.regex.btntest;"
+						oncommand="onTestRegEx();">
+					</button>
+				</hbox>
+			</groupbox>
+			<groupbox align="center">
+				<text class="text-link" value="&ppost.opt.regex.ad;"
+					onclick="window.opener.openURL('http://pennypost.sourceforge.net/RegularExpressions');"
+					flex="1">
+				</text>
+			</groupbox>
+		</vbox>
+	</prefpane>
+
+	<prefpane id="msExProgPaths" label="&ppost.opt.exprog;"
+		image="chrome://ppost/skin/exprog.png">
+		<preferences>
+			<preference id="ppost.usejavalaunch"
+				name="ppost.usejavalaunch" type="bool">
+			</preference>
+			<preference id="ppost.javapath" name="ppost.javapath"
+				type="string">
+			</preference>
+			<preference id="ppost.path" name="ppost.path"
+				type="string">
+			</preference>
+		</preferences>
+		<vbox>
+			<groupbox>
+				<caption label="&ppost.exprog.stampprog;"></caption>
+				<label value="&ppost.exprog.stampprog.box;:"></label>
+				<hbox>
+					<textbox preference="ppost.path" flex="1"
+						id="ppost.path.box" />
+					<button id="detectStampProg"
+						label="&ppost.exprog.stampprog.detectbtn;"
+						oncommand="onDetectStampProgram();">
+					</button>
+					<button id="browseStampProg" label="..."
+						oncommand="onBrowseStampProgram();">
+					</button>
+				</hbox>
+				<groupbox align="center">
+					<label class="text-link"
+						value="Penny Post - &ppost.exprog.stampprog.ad;"
+						onclick="window.opener.openURL('http://sourceforge.net/project/showfiles.php?group_id=201935&amp;package_id=240368');"
+						flex="1">
+					</label>
+				</groupbox>
+			</groupbox>
+			<groupbox>
+				<caption label="&ppost.exprog.javasetup;"></caption>
+				<checkbox id="ppost.usejavalaunch"
+					preference="ppost.usejavalaunch" label="&ppost.exprog.usejava;"
+					accesskey="&ppost.exprog.usejava.key;"
+					tooltiptext="&ppost.exprog.usejava.tip;">
+				</checkbox>
+				<label value="&ppost.exprog.javapath;"></label>
+				<hbox>
+					<textbox preference="ppost.javapath" flex="1"
+						id="ppost.javapath.box">
+					</textbox>
+					<button label="..." id="browseJava"
+						oncommand="onBrowseJava();">
+					</button>
+				</hbox>
+
+
+				<groupbox align="center">
+					<text class="text-link"
+						value="&ppost.exprog.java.ad;"
+						onclick="window.opener.openURL('http://www.java.com/download/');"
+						flex="1">
+					</text>
+				</groupbox>
+			</groupbox>
+		</vbox>
+
+	</prefpane>
+	<prefpane id="msHashCash" label="&ppost.opt.hcsettings;"
+		image="chrome://ppost/skin/hc.png">
+		<preferences>
+			<preference id="ppost.hashcash.minvalue"
+				name="ppost.hashcash.minvalue" type="int">
+			</preference>
+			<preference id="ppost.hashcash.mintvalue"
+				name="ppost.hashcash.mintvalue" type="int">
+			</preference>
+			<preference id="ppost.hashcash.mintver"
+				name="ppost.hashcash.mintver" type="int">
+			</preference>
+			<preference id="ppost.hashcash.maxver"
+				name="ppost.hashcash.maxver" type="int">
+			</preference>
+			<preference id="ppost.hashcash.enable"
+				name="ppost.hashcash.enable" type="bool">
+			</preference>
+		</preferences>
+		<vbox>
+			<checkbox id="ppost.hashcash.enable"
+				preference="ppost.hashcash.enable" label="&ppost.mb.usehc;"
+				accesskey="&ppost.mb.usehc.key;">
+			</checkbox>
+			<groupbox>
+				<caption label="&ppost.opt.stampgen;"></caption>
+				<hbox align="center">
+					<label value="&ppost.opt.stampvern;:"></label>
+					<textbox size="2"
+						preference="ppost.hashcash.mintver"
+						tooltiptext="&ppost.opt.stampvern.note;">
+					</textbox>
+				</hbox>
+				<hbox align="center">
+					<label
+						value="&ppost.opt.stampval; (&ppost.opt.stampval.note;):">
+					</label>
+					<textbox size="2"
+						preference="ppost.hashcash.mintvalue">
+					</textbox>
+				</hbox>
+			</groupbox>
+			<groupbox>
+				<caption label="&ppost.opt.stampver;"></caption>
+				<hbox>
+					<hbox align="center">
+						<label value="&ppost.opt.stampmxver;:"></label>
+						<textbox size="2"
+							preference="ppost.hashcash.maxver"
+							tooltiptext="&ppost.opt.stampvern.note;">
+						</textbox>
+					</hbox>
+					<spacer flex="1"></spacer>
+					<hbox align="center">
+						<label value="&ppost.opt.stampmnver;:"></label>
+						<textbox size="2"
+							preference="ppost.hashcash.minvalue"
+							tooltiptext="&ppost.opt.stampmnver.note;">
+						</textbox>
+					</hbox>
+					<spacer flex="3"></spacer>
+				</hbox>
+			</groupbox>
+			<groupbox align="center">
+				<text class="text-link" value="http://www.hashcash.org"
+					onclick="window.opener.openURL('http://www.hashcash.org/');"
+					flex="1">
+				</text>
+			</groupbox>
+		</vbox>
+	</prefpane>
+	<prefpane id="msMBound" label="&ppost.opt.mbsettings;"
+		image="chrome://ppost/skin/mb.png">
+		<preferences>
+			<preference id="ppost.mbound.minvalue"
+				name="ppost.mbound.minvalue" type="int">
+			</preference>
+			<preference id="ppost.mbound.minpath"
+				name="ppost.mbound.minpath" type="int">
+			</preference>
+			<preference id="ppost.mbound.maxpath"
+				name="ppost.mbound.maxpath" type="int">
+			</preference>
+			<preference id="ppost.mbound.mintvalue"
+				name="ppost.mbound.mintvalue" type="int">
+			</preference>
+			<preference id="ppost.mbound.mintpath"
+				name="ppost.mbound.mintpath" type="int">
+			</preference>
+			<preference id="ppost.mbound.mintver"
+				name="ppost.mbound.mintver" type="int">
+			</preference>
+			<preference id="ppost.mbound.maxver"
+				name="ppost.mbound.maxver" type="int">
+			</preference>
+			<preference id="ppost.mbound.enable"
+				name="ppost.mbound.enable" type="bool">
+			</preference>
+		</preferences>
+		<vbox>
+			<checkbox id="ppost.mbound.enable"
+				preference="ppost.mbound.enable" label="&ppost.mb.usembound;"
+				accesskey="&ppost.mb.usembound.key;">
+			</checkbox>
+			<groupbox>
+				<caption label="&ppost.opt.stampgen;"></caption>
+				<hbox align="center">
+					<label value="&ppost.opt.stampvern;:"></label>
+					<textbox size="2" preference="ppost.mbound.mintver"
+						tooltiptext="&ppost.opt.stampvern.note;">
+					</textbox>
+				</hbox>
+				<hbox align="center">
+					<label
+						value="&ppost.opt.stampval; (&ppost.opt.stampval.note;):">
+					</label>
+					<textbox size="2"
+						preference="ppost.mbound.mintvalue">
+					</textbox>
+				</hbox>
+				<hbox align="center">
+					<label
+						value="&ppost.opt.mb.stampdepth; (&ppost.opt.mb.stampdepth.note;):">
+					</label>
+					<textbox size="4"
+						preference="ppost.mbound.mintpath">
+					</textbox>
+				</hbox>
+			</groupbox>
+			<groupbox>
+				<caption label="&ppost.opt.stampver;"></caption>
+				<hbox>
+					<hbox align="center">
+						<label value="&ppost.opt.stampmxver;:"></label>
+						<textbox size="2"
+							preference="ppost.mbound.maxver"
+							tooltiptext="&ppost.opt.stampvern.note;">
+						</textbox>
+					</hbox>
+					<spacer flex="1"></spacer>
+					<hbox align="center">
+						<label value="&ppost.opt.stampmnver;:"></label>
+						<textbox size="2"
+							preference="ppost.mbound.minvalue"
+							tooltiptext="&ppost.opt.stampmnver.note;">
+						</textbox>
+					</hbox>
+					<spacer flex="3"></spacer>
+				</hbox>
+
+				<hbox>
+					<hbox align="center">
+						<label value="&ppost.opt.mb.stampmndepth;:"></label>
+						<textbox size="4"
+							preference="ppost.mbound.minpath"
+							tooltiptext="&ppost.opt.mb.stampmndepth.note;">
+						</textbox>
+					</hbox>
+					<spacer flex="1"></spacer>
+					<hbox align="center">
+						<label value="&ppost.opt.mb.stampmxdepth;:"></label>
+						<textbox size="4"
+							preference="ppost.mbound.maxpath"
+							tooltiptext="&ppost.opt.mb.stampmxdepth.note;">
+						</textbox>
+					</hbox>
+					<spacer flex="3"></spacer>
+				</hbox>
+
+			</groupbox>
+		</vbox>
+	</prefpane>
+
+
+	<!--Non preference tags must be placed right at the end to avoid funny behaviour-->
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="string-bundle"
+			src="chrome://ppost/locale/ppost.properties" />
+	</stringbundleset>
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/ppost.js" />
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/pennyPostOptions.js" />
+
+</prefwindow>

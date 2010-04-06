@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * Penny Post - A postage system for email
+ * Copyright (C) 2007  Aliasgar Lokhandwala <d7@freepgs.com> 
+ * http://pennypost.sourceforge.net/
+ *
+ * messageWindowOverlay.xul: Overlay for the message read window
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE overlay SYSTEM "chrome://ppost/locale/ppost.dtd">
+<overlay id="composeOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://ppost/content/ppost.js" />
+  <script type="application/x-javascript" src="chrome://ppost/content/messageWindowOverlay.js" />
+       <stringbundleset id="stringbundleset">
+   <stringbundle id="string-bundle" src="chrome://ppost/locale/ppost.properties"/>
+ </stringbundleset>   
+  <menupopup id="messageMenuPopup">
+    <menuitem insertafter="menu_editMsgAsNew" label="&ppost.stampinfotab;" oncommand="displayStampInfo();" />
+  </menupopup>
+  
+  <hbox id="expandedHeaderView">  
+    <vbox id="ppostBox" align="start" insertbefore="expandedHeaders">
+      <hbox>
+        <spacer flex="1" />
+        <image id="ppostIcon"
+        style="width:64px; height:64px; margin-right:5px; margin-left:5px;"
+        onclick="displayStampInfo();" />
+        <spacer flex="1" />
+      </hbox>
+    </vbox>
+  </hbox>
+  
+</overlay>

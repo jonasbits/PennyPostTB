@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	Penny Post - A postage system for email
+ 	Copyright (C) 2007  Aliasgar Lokhandwala <d7@freepgs.com> 
+ 	http://pennypost.sourceforge.net/
+
+ 	stampInfo.xul: Stamp info dialog
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://ppost/locale/ppost.dtd">
+
+<dialog
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&ppost.stampinfo.title;" style="width: 40em;" onload="onLoad()"
+	onunload="onUnload()" buttons="accept"
+	ondialogaccept="return onOk();">
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="string-bundle"
+			src="chrome://ppost/locale/ppost.properties" />
+	</stringbundleset>
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/ppost.js">
+	</script>
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/stampInfo.js">
+	</script>
+	<tabbox>
+		<tabs>
+			<tab label="&ppost.stampinfotab;"
+				accesskey="&ppost.stampinfotab.accesskey;" />
+			<tab label="&ppost.senderstampinfotab;"
+				accesskey="&ppost.senderstampinfotab.accesskey;" />
+			<tab label="&ppost.allstampsinfotab;"
+				accesskey="&ppost.allstampsinfotab.accesskey;" />
+		</tabs>
+		<tabpanels>
+			<tabpanel id="msStampInfo">
+				<grid flex="1">
+					<columns>
+						<column />
+						<column flex="1" />
+					</columns>
+
+					<rows>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.validity;:"
+									crop="right">
+								</label>
+							</hbox>
+							<label id="stamp.validity"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.algorithm;:"
+									crop="right" />
+							</hbox>
+							<label id="stamp.algo"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.version;:" />
+							</hbox>
+							<label id="stamp.algover"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.cost;:" />
+							</hbox>
+							<label id="stamp.cost"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.recep;:" />
+							</hbox>
+							<label id="stamp.recipient" crop="right"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.date;:" />
+							</hbox>
+							<label id="stamp.date" crop="right"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.email.date;:" />
+							</hbox>
+							<label id="email.date" crop="right"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.id;:" />
+							</hbox>
+							<label id="stamp.id" crop="right"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.value;:" />
+							</hbox>
+							<label id="stamp.value" crop="right"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.data;:" />
+							</hbox>
+							<label id="stamp.data" crop="right"></label>
+						</row>
+						<row>
+							<hbox pack="start">
+								<label value="&ppost.stamp.status;:"></label>
+							</hbox>
+							<textbox id="stamp.status" readonly="true"
+								multiline="true">
+							</textbox>
+						</row>
+
+					</rows>
+				</grid>
+			</tabpanel>
+
+			<tabpanel id="msSenderStampReq">
+				<grid flex="1">
+					<columns>
+						<column />
+						<column flex="1"></column>
+					</columns>
+
+					<rows>
+						<row>
+							<hbox pack="start">
+								<label
+									value="&ppost.stamp.sender.prefalgo;:" crop="right">
+								</label>
+							</hbox>
+							<label id="sender.defalgo"></label>
+						</row>
+						<groupbox>
+							<caption label="MBound"></caption>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.algorithm.supported;:" crop="right">
+									</label>
+								</hbox>
+								<label id="sender.mb"></label>
+							</row>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.maxver;:">
+									</label>
+								</hbox>
+								<label id="sender.mb.ver"></label>
+							</row>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.mincost;:"
+										tooltiptext="&ppost.stamp.mincost.tip;" />
+								</hbox>
+								<label id="sender.mb.cost"></label>
+							</row>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.mindepth;:" />
+								</hbox>
+								<label id="sender.mb.minpath"
+									crop="right">
+								</label>
+							</row>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.maxdepth;:" />
+								</hbox>
+								<label id="sender.mb.maxpath"
+									crop="right">
+								</label>
+							</row>
+						</groupbox>
+						<groupbox>
+							<caption label="HashCash"></caption>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.algorithm.supported;:" crop="right">
+									</label>
+								</hbox>
+								<label id="sender.hc"></label>
+							</row>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.maxver;:">
+									</label>
+								</hbox>
+								<label id="sender.hc.ver"></label>
+							</row>
+							<row>
+								<hbox pack="start">
+									<label
+										value="&ppost.stamp.mincost;:"
+										tooltiptext="&ppost.stamp.mincost.tip;" />
+								</hbox>
+								<label id="sender.hc.cost"></label>
+							</row>
+						</groupbox>
+					</rows>
+				</grid>
+			</tabpanel>
+			<tabpanel id="msSenderStampReq">
+				<vbox flex="1">
+					<listbox rows="7" id="allstamps.list" style="overflow:auto;" onselect="onAddressSelect();"/>
+					<textbox id="allstamps.desc" readonly="true"
+						multiline="true">
+					</textbox>
+				</vbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+</dialog>

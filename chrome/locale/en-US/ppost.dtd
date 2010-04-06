@@ -1,0 +1,107 @@
+<!ENTITY ppost.stampinfo.title "Penny Post Stamp Information">
+<!ENTITY ppost.stampprogress.title "Stamping Progress">
+<!ENTITY ppost.about.title "About Penny Post">
+<!ENTITY ppost.opt.title "Penny Post Options">
+<!ENTITY ppost.about.crby "Created By">
+<!ENTITY ppost.about.homepg "Home Page">
+<!ENTITY ppost.about.ackn "See acknowledgements for a complete list of contributors">
+<!ENTITY ppost.about.dnpg "Updates">
+<!ENTITY ppost.about.dnlatest "Download the latest version here">
+<!ENTITY ppost.opt.emailsetup "Email address setup">
+<!ENTITY ppost.opt.emailsetup.tab "Email setup">
+<!ENTITY ppost.opt.regexsetup "Regular expression tester">
+<!ENTITY ppost.regex.help "Check your regular expressions here before you enter them in the email addresses box above.">
+<!ENTITY ppost.opt.regex.ad "Open the regular expressions guide">
+<!ENTITY ppost.regex.expn "Type in the regular expression">
+<!ENTITY ppost.regex.string "Type in the email address to test">
+<!ENTITY ppost.regex.btntest "Test match">
+<!ENTITY ppost.about.spltx "Special thanks to">
+<!ENTITY ppost.about.contrib "Contributors">
+<!ENTITY ppost.about.impl "implementation">
+<!ENTITY ppost.about.pgr "Postage graphic">
+<!ENTITY ppost.about.icons "Icons">
+<!ENTITY ppost.stampinfotab "Stamp Info">
+<!ENTITY ppost.stampinfotab.accesskey "I">
+<!ENTITY ppost.senderstampinfotab "Senders Stamp Request">
+<!ENTITY ppost.senderstampinfotab.accesskey "R">
+<!ENTITY ppost.allstampsinfotab "All detected stamps">
+<!ENTITY ppost.allstampsinfotab.accesskey "A">
+<!ENTITY ppost.stamp.validity "Validity">
+<!ENTITY ppost.stamp.algorithm "Stamp algorithm">
+<!ENTITY ppost.stamp.algorithm.supported "Supported">
+<!ENTITY ppost.stamp.version "Stamp version">
+<!ENTITY ppost.stamp.cost "Stamp cost">
+<!ENTITY ppost.stamp.opt "Stamp options">
+<!ENTITY ppost.stamp.recep "Stamp recipient">
+<!ENTITY ppost.stamp.date "Stamp date">
+<!ENTITY ppost.email.date "Email received">
+<!ENTITY ppost.stamp.id "Stamp Id">
+<!ENTITY ppost.stamp.value "Stamp value">
+<!ENTITY ppost.stamp.data "Stamp data">
+<!ENTITY ppost.stamp.status "Status">
+<!ENTITY ppost.stamp.progress "Progress">
+<!ENTITY ppost.stamp.sender.prefalgo "Senders Preferred Algorithm">
+<!ENTITY ppost.stamp.maxver "Maximum version">
+<!ENTITY ppost.stamp.mincost "Minimum cost">
+<!ENTITY ppost.stamp.mindepth "Minimum depth">
+<!ENTITY ppost.stamp.maxdepth "Maximum depth">
+<!ENTITY ppost.stamp.mincost.tip "Sender only accepts stamps with a value more than this">
+<!ENTITY ppost.menu.stampnsend "Stamp &amp; Send">
+<!ENTITY ppost.menu.stampnsend_now "Stamp &amp; Send Now">
+<!ENTITY ppost.menu.stampnsend_later "Stamp &amp; Send Later">
+<!ENTITY ppost.default "Default">
+<!ENTITY ppost.opt.gensettings "General Settings">
+<!ENTITY ppost.opt.stamp_age_label "Days after which a stamp is considered invalid">
+<!ENTITY ppost.addsignature "Add Penny Post signature to stamped outgoing mail">
+<!ENTITY ppost.addsignature.key "A">
+<!ENTITY ppost.addsignature.tip "Let others know how they too can combat spam by stamping their email!">
+<!ENTITY ppost.automarkjunk "Automatically mark messages with invalid stamps as Junk">
+<!ENTITY ppost.automarkjunk.key "M">
+<!ENTITY ppost.automarkjunk.tip "This prevents people from sending you emails with fake postage stamps">
+<!ENTITY ppost.opt.addheaderscroll "Add scrollbars to the message header pane (requires restart)">
+<!ENTITY ppost.opt.addheaderscroll.key "b">
+<!ENTITY ppost.opt.addheaderscroll.tip "Enable this to prevent the email header pane from getting too big">
+<!ENTITY ppost.opt.skipdateveri "Skip date verification on stamps (Not recommended)">
+<!ENTITY ppost.opt.skipdateveri.key "S">
+<!ENTITY ppost.opt.skipdateveri.tip "Enable this only if your thunderbird setup uses a non-standard date format">
+<!ENTITY ppost.opt.stamp_age_tip "NOTE: A higher values makes you more susceptible to spam">
+<!ENTITY ppost.opt.ad "Open the quick configuration guide">
+<!ENTITY ppost.opt.verhist "Extension version">
+<!ENTITY ppost.opt.exprog "External Program Paths">
+<!ENTITY ppost.opt.emails "List all email addresses you use to receive email (comma seperated)">
+<!ENTITY ppost.opt.emails.help1 "Tip: You can now enter limited regular expressions in place of entire email addresses.">
+<!ENTITY ppost.opt.emails.help2 "For example, '\S+@server.com' matches 'anyAddress@server.com'.">
+<!ENTITY ppost.opt.defalgo "Default Stamp Algorithm">
+<!ENTITY ppost.opt.other "Other">
+<!ENTITY ppost.opt.other.paneht "Height of header pane (affects stamp icon position)">
+<!ENTITY ppost.exprog.stampprog "Stamp Program Setup">
+<!ENTITY ppost.exprog.stampprog.box "Path to stamp program executable or jar">
+<!ENTITY ppost.exprog.stampprog.detectbtn "Auto Detect">
+<!ENTITY ppost.exprog.stampprog.ad "a free stamp program can be downloaded here">
+<!ENTITY ppost.exprog.javasetup "Sun Java Setup">
+<!ENTITY ppost.exprog.usejava "Use java to launch stamp program">
+<!ENTITY ppost.exprog.usejava.key "j">
+<!ENTITY ppost.exprog.usejava.tip "Check this if the stamp program points to a Java jar file">
+<!ENTITY ppost.exprog.javapath "Path to Suns Java executable (version 5 or higher)">
+<!ENTITY ppost.exprog.java.ad "Suns Java can be downloaded for free here">
+<!ENTITY ppost.mb.usembound "Enable MBound support">
+<!ENTITY ppost.mb.usembound.key "e">
+<!ENTITY ppost.mb.usehc "Enable HashCash support">
+<!ENTITY ppost.mb.usehc.key "e">
+<!ENTITY ppost.opt.stampgen "Stamp Generation">
+<!ENTITY ppost.opt.stampver "Stamp Verification">
+<!ENTITY ppost.opt.stampvern "Version">
+<!ENTITY ppost.opt.stampval "Value">
+<!ENTITY ppost.opt.stampval.note "Higher values take longer to compute">
+<!ENTITY ppost.opt.mb.stampdepth "Depth">
+<!ENTITY ppost.opt.mb.stampdepth.note "Higher values take longer to computer &amp; verify">
+<!ENTITY ppost.opt.mb.stampmndepth "Min depth accepted">
+<!ENTITY ppost.opt.mb.stampmndepth.note "Must be greater than 1">
+<!ENTITY ppost.opt.mb.stampmxdepth "Max depth accepted">
+<!ENTITY ppost.opt.mb.stampmxdepth.note "NOTE: Accepting higher depth makes you susceptible to DoS attacks">
+<!ENTITY ppost.opt.stampmxver "Max version accepted">
+<!ENTITY ppost.opt.stampvern.note "NOTE: Your stamp program must accept this version">
+<!ENTITY ppost.opt.stampmnver "Min value accepted">
+<!ENTITY ppost.opt.stampmnver.note "NOTE: Accepting lower values makes you susceptible to spam">
+<!ENTITY ppost.opt.hcsettings "HashCash Settings">
+<!ENTITY ppost.opt.mbsettings "MBound Settings">

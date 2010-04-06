@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	Penny Post - A postage system for email
+	Copyright (C) 2007  Aliasgar Lokhandwala <d7@freepgs.com> 
+	http://pennypost.sourceforge.net/
+	
+	about.xul: About penny post dialog
+	
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE window SYSTEM "chrome://ppost/locale/ppost.dtd">
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window class="dialog" title="&ppost.about.title;" orient="vertical"
+	autostretch="always" onload="sizeToContent()"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<groupbox align="center" orient="horizontal">
+		<vbox>
+			<text value="Penny Post"
+				style="font-weight: bold; font-size: x-large;" />
+			<text value="ver 1.4"></text>
+			<separator class="thin" />
+			<text value="&ppost.about.crby;:"
+				style="font-weight: bold;" />
+			<text value="Aliasgar Lokhandwala" class="text-link"
+				onclick="window.opener.openURL('http://pennypost.sourceforge.net/AliasgarLokhandwala');" />
+			<separator class="thin" />
+
+			<text value="&ppost.about.homepg;:"
+				style="font-weight: bold;" />
+			<text value="http://pennypost.sourceforge.net/"
+				class="text-link"
+				onclick="window.opener.openURL('http://pennypost.sourceforge.net/')"
+				href="http://pennypost.sourceforge.net/">
+			</text>
+			<separator class="thin" />
+
+			<text value="&ppost.about.dnpg;:"
+				style="font-weight: bold;" />
+			<text value="&ppost.about.dnlatest;" class="text-link"
+				onclick="window.opener.openURL('http://sourceforge.net/project/showfiles.php?group_id=201935&amp;package_id=242033')"
+				href="http://sourceforge.net/project/showfiles.php?group_id=201935&amp;package_id=242033">
+			</text>
+			<separator class="thin" />
+
+		</vbox>
+		<spring flex="1" />
+		<image src="chrome://ppost/skin/ms.png"></image>
+	</groupbox>
+	<vbox>
+		<groupbox>
+			<vbox>
+				<text value="&ppost.about.spltx; Dr. Mark Ryan"
+					style="font-weight: bold;" />
+				<text value="http://www.cs.bham.ac.uk/~mdr/"
+					class="text-link"
+					onclick="window.opener.openURL('http://www.cs.bham.ac.uk/~mdr/')">
+				</text>
+
+			</vbox>
+		</groupbox>
+	</vbox>
+	<vbox>
+		<groupbox>
+			<caption label="&ppost.about.contrib;"></caption>
+			<hbox>
+				<text value="HashCash &ppost.about.impl;: "
+					style="font-weight: bold;">
+				</text>
+
+				<text value="Gregory Rubin" class="text-link"
+					onclick="window.opener.openURL('http://www.nettgryppa.com/');">
+				</text>
+			</hbox>
+			<separator class="thin" />
+			<hbox>
+				<text value="&ppost.about.pgr;: "
+					style="font-weight: bold;" />
+				<text value="Ian Seth Taylor" class="text-link"
+					onclick="window.opener.openURL('http://nightmareclothing.deviantart.com/');" />
+			</hbox>
+			<separator class="thin"></separator>
+			<hbox>
+				<text value="&ppost.about.icons;: "
+					style="font-weight: bold;" />
+				<text value="Philipp Antoni (Infinise Design)"
+					class="text-link"
+					onclick="window.opener.openURL('http://pantoni.deviantart.com/');">
+				</text>
+			</hbox>
+			<separator class="thin" />
+			<hbox>
+				<text value="&ppost.about.ackn;"
+					class="text-link"
+					onclick="window.opener.openURL('http://pennypost.sourceforge.net/Acknowledgements')">
+				</text>
+			</hbox>
+		</groupbox>
+	</vbox>
+
+	<vbox>
+		<groupbox>
+			<description class="monospace"
+				style="font-size: x-small; width: 30em;">
+				This program is free software; you can redistribute it
+				and/or modify it under the terms of the GNU General
+				Public License as published by the Free Software
+				Foundation; either version 3 of the License, or (at your
+				option) any later version.
+
+				This program is distributed in the hope that it will be
+				useful, but WITHOUT ANY WARRANTY; without even the
+				implied warranty of MERCHANTABILITY or FITNESS FOR A
+				PARTICULAR PURPOSE. See the GNU General Public License
+				for more details.
+
+				Any external programs invoked by this program are
+				copyright their respective owners and covered by their
+				respective licences.
+			</description>
+		</groupbox>
+	</vbox>
+	<separator class="thin" />
+	<hbox>
+		<spacer flex="1" />
+		<button label="Close" oncommand="window.close();" />
+	</hbox>
+</window>

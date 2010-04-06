@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	Penny Post - A postage system for email
+  	Copyright (C) 2007  Aliasgar Lokhandwala <d7@freepgs.com> 
+  	http://pennypost.sourceforge.net/
+
+  	stampProgress.xul: Stamping progress dialog
+  
+  	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://ppost/locale/ppost.dtd">
+<dialog
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	title="&ppost.stampprogress.title;" style="width: 36em;"
+	onload="onLoad()" onunload="onUnload()" buttons="cancel"
+	ondialogcancel="return onCancel();">
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="string-bundle"
+			src="chrome://ppost/locale/ppost.properties" />
+	</stringbundleset>
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/ppost.js" />
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/stampProgress.js">
+	</script>
+
+	<grid flex="1">
+		<columns>
+			<column />
+			<column flex="1" />
+		</columns>
+
+		<rows>
+			<row>
+				<hbox pack="end">
+					<label value="&ppost.stamp.status;:" />
+				</hbox>
+				<label id="dialog.status" crop="center"></label>
+			</row>
+			<row class="thin-separator">
+				<hbox pack="end">
+					<label value="&ppost.stamp.progress;:" />
+				</hbox>
+				<progressmeter id="dialog.progress" mode="normal"
+					value="0" />
+				<hbox pack="end">
+					<label id="dialog.progressText"></label>
+				</hbox>
+			</row>
+		</rows>
+	</grid>
+
+</dialog>

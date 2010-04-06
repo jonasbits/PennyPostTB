@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	Penny Post - A postage system for email
+	Copyright (C) 2007  Aliasgar Lokhandwala <d7@freepgs.com> 
+	http://pennypost.sourceforge.net/
+	
+	composeOverlay.xul: Overlay for the message compose window
+	
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE overlay SYSTEM "chrome://ppost/locale/ppost.dtd">
+<?xml-stylesheet href="chrome://ppost/skin/ppstyle.css" type="text/css"?>
+<overlay id="composeOverlay"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/ppost.js" />
+	<script type="application/x-javascript"
+		src="chrome://ppost/content/composeOverlay.js">
+	</script>
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="string-bundle"
+			src="chrome://ppost/locale/ppost.properties" />
+	</stringbundleset>
+	<commandset id="composeCommands">
+		<command id="cmd_StampSendNow"
+			oncommand="StampSend(gStampTypes.UNKNOWN,true)" />
+		<command id="cmd_StampSendLater"
+			oncommand="StampSend(gStampTypes.UNKNOWN,false)" />
+		<command id="cmd_StampSendNowHC"
+			oncommand="StampSend(gStampTypes.HASHCASH,true)">
+		</command>
+		<command id="cmd_StampSendNowMB"
+			oncommand="StampSend(gStampTypes.MBOUND,true)">
+		</command>
+		<command id="cmd_StampSendLaterHC"
+			oncommand="StampSend(gStampTypes.HASHCASH,false)">
+		</command>
+		<command id="cmd_StampSendLaterMB"
+			oncommand="StampSend(gStampTypes.MBOUND,false)" />
+	</commandset>
+	<menupopup id="menu_FilePopup">
+		<menu id="msStampMessageLaterMenu"
+			label="&ppost.menu.stampnsend_later;"
+			insertafter="menu-item-send-now">
+			<menupopup id="msStampMessageMenuLater-popup">
+				<menuitem id="msStampMessageLater" label="Default"
+					command="cmd_StampSendLater">
+				</menuitem>
+				<menuitem id="msMBoundLater" label="MBound"
+					command="cmd_StampSendLaterMB">
+				</menuitem>
+				<menuitem id="msHashCashLater" label="HashCash"
+					command="cmd_StampSendLaterHC">
+				</menuitem>
+			</menupopup>
+		</menu>
+		<menu id="msStampMessageNowMenu"
+			label="&ppost.menu.stampnsend_now;"
+			insertafter="menu-item-send-now">
+			<menupopup id="msStampMessageMenuNow-popup">
+				<menuitem id="msStampMessageNow" label="&ppost.default;"
+					command="cmd_StampSendNow">
+				</menuitem>
+				<menuitem id="msMBoundNow" label="MBound"
+					command="cmd_StampSendNowMB">
+				</menuitem>
+				<menuitem id="msHashCashNow" label="HashCash"
+					command="cmd_StampSendNowHC" />
+			</menupopup>
+		</menu>
+	</menupopup>
+
+	<toolbarpalette id="MsgComposeToolbarPalette">
+		<toolbarbutton type="menu-button" id="button-stamp-send"
+			label="&ppost.menu.stampnsend;" command="cmd_StampSendNow"
+			insertafter="button-send" buttontype="thunderbird"
+			class="toolbarbutton-1" now_label="&ppost.menu.stampnsend;"
+			later_label="&ppost.menu.stampnsend_later;">
+			<menupopup id="msStampMessageMenuNow-popup">
+				<menuitem id="msHashCashNow" label="HashCash"
+					command="cmd_StampSendNowHC" />
+				<menuitem id="msMBoundNow" label="MBound"
+					command="cmd_StampSendNowMB">
+				</menuitem>
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+	<!-- Thunderbird 2.0 -->
+	<toolbar id="composeToolbar2"
+		defaultset="button-send,button-stamp-send,separator,button-address,spellingButton,button-attach,button-security,button-save"> 
+	</toolbar>
+	<!-- Thunderbird 1.0 - 1-5 -->
+	<!--toolbar id="composeToolbar"
+		defaultset="button-send,button-stamp-send,separator,button-address,spellingButton,button-attach,button-security,button-save"> 
+	</toolbar-->
+</overlay>
