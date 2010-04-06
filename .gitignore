@@ -1,3 +1,2 @@
-lib
-lib/*
-/defaults/pref_old/ppost.js
+/lib*
+/zip*
