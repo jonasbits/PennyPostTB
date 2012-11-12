@@ -37,7 +37,7 @@
       <hbox>
         <spacer flex="1" />
         <image id="ppostIcon"
-        style="width:64px; height:64px; margin-right:5px; margin-left:5px;"
+        style="width:32px; height:32px; margin-right:2px; margin-left:2px;"
         onclick="displayStampInfo();" />
         <spacer flex="1" />
       </hbox>
