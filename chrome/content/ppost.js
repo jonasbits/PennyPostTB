@@ -33,21 +33,30 @@ var gStampTypes={	UNKNOWN:0,
 function getJarPath(){
 	try{
 		var eid = "{3748ced8-ae28-48ac-a954-4bff3360f72c}";
-		var ext = Components.classes["@mozilla.org/extensions/manager;1"]
+		/**var ext = Components.classes["@mozilla.org/extensions/manager;1"]
 	                    .getService(Components.interfaces.nsIExtensionManager)
 	                    .getInstallLocation(eid)
 	                    .getItemLocation(eid); 
-	    ext.append("lib");
-	    ext.append("ppost.jar");
-	    if(!ext.exists()){
+	    	ext.append("lib");
+	    	ext.append("ppost.jar");
+		*/
+		//var addonLocation;
+		Components.utils.import("resource://gre/modules/AddonManager.jsm");  
+			AddonManager.getAddonByID(eid, function(addon) {
+				addonLocation = addon.getResourceURI("/lib/ppost.jar").QueryInterface(Components.interfaces.nsIFileURL).file.path;
+				alert("Copy this " + addonLocation);
+			}); //end of AddonManager async call
+	    /*if(!ext.exists()){
 	    	throw new Error('ppost.jar not found in '+ext.path);
 	    }
+	    */
+
 	}catch(ex){
 		Components.utils.reportError(ex);
 		//ignore
 		return '';
 	}
-	return ext.path;
+	return "Copy path from popup dialog";
 }
 
 /**

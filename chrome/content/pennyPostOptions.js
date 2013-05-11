@@ -95,7 +95,7 @@ function onDetectStampProgram(){
 }
 
 /**
- * Opens the filepicker to search for te stamp executable or jar
+ * Opens the filepicker to search for the stamp executable or jar
  */
 function onBrowseStampProgram(){
 	var filePickerDlg = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
@@ -120,7 +120,7 @@ function onBrowseStampProgram(){
 }
 
 /**
- * Opens the filepicker to search for te java executable
+ * Opens the filepicker to search for the java executable
  */
 function onBrowseJava(){
 	var filePickerDlg = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);

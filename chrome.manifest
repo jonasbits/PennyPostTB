@@ -1,9 +1,9 @@
 overlay	chrome://messenger/content/messengercompose/messengercompose.xul        chrome://ppost/content/composeOverlay.xul
 overlay chrome://messenger/content/messageWindow.xul                            chrome://ppost/content/messageWindowOverlay.xul
-overlay chrome://messenger/content/messenger.xul								chrome://ppost/content/messageWindowOverlay.xul
-overlay chrome://global/content/customizeToolbar.xul 							chrome://ppost/content/custToolbarOverlay.xul
+overlay chrome://messenger/content/messenger.xul				chrome://ppost/content/messageWindowOverlay.xul
+overlay chrome://global/content/customizeToolbar.xul 				chrome://ppost/content/custToolbarOverlay.xul
 
-style	chrome://messenger/content/messengercompose/messengercompose.xul		chrome://ppost/skin/ppstyle.css
+style	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://ppost/skin/ppstyle.css
 
 content	ppost	chrome/content/
 skin	ppost	classic/1.0	chrome/skin/classic/
