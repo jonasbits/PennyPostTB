@@ -37,6 +37,8 @@ catch (ex) {
 //Uses: ppost.js
 
 //Globals
+//TB 24 stopped using "gIOService" and now we need to define it
+var gIOService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
 var gAttachStamp=false;
 var gGenStamps='';
 var gStrBundle=null;

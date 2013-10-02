@@ -18,6 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+//TB 24 stopped using "pref" and now we need to define it, the same with "gIOService"
+var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+var gIOService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);  
+ 
 var gStampTypes={	UNKNOWN:0,
 					S_UNKNOWN:'none',
 					HASHCASH:1,
