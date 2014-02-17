@@ -34,19 +34,19 @@ var prefs=null;
 function initDlg() {
     try{
         //Read args & Set global variables
-		gStrBundle = document.getElementById("string-bundle");
+		gStrBundle = document.getElementById("ppost.string-bundle");
 		
 		//init dialog elements
         dialog = new Object;
 
-        dialog.ppost = document.getElementById("ppost.path.box");
+        dialog.ppost = document.getElementById("extensions.ppost.path.box");
         dialog.javapath = document.getElementById("ppost.javapath.box");
         dialog.hc_enable = document.getElementById("ppost.hashcash.enable");
         dialog.mb_enable = document.getElementById("ppost.mbound.enable");
-        dialog.def_algo = document.getElementById("ppost.defalgo");
+        dialog.def_algo = document.getElementById("extensions.ppost.defalgo");
         
-        prefs = Components.classes["@mozilla.org/preferences-service;1"].
-                getService(Components.interfaces.nsIPrefBranch);
+        //prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	prefs = Services.prefs;
     }catch(ex){
     	alert(gStrBundle.getString("windowloadfail") + " - " + ex);
     	window.close();
@@ -90,7 +90,7 @@ function onDetectStampProgram(){
 		alert(gStrBundle.getString("jarpathdetectfail"));
 	}else{
 		dialog.ppost.value=jarpath;
-		prefs.setCharPref('ppost.path', dialog.ppost.value);
+		prefs.setCharPref('extensions.ppost.path', dialog.ppost.value);
 	}
 }
 
@@ -106,7 +106,7 @@ function onBrowseStampProgram(){
  	var file=null;
  	try{
 		file = Components.classes["@mozilla.org/file/local;1"]
-		           		.createInstance(Components.interfaces.nsILocalFile);
+		           		.createInstance(Components.interfaces.nsIFile);
 		file.initWithPath(dialog.ppost.value);
 		filePickerDlg.displayDirectory=file;
  	}catch(ex){
@@ -115,7 +115,7 @@ function onBrowseStampProgram(){
  	var rv=filePickerDlg.show();
 	if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
 		dialog.ppost.value=filePickerDlg.file.path;
-		prefs.setCharPref('ppost.path', dialog.ppost.value);
+		prefs.setCharPref('extensions.ppost.path', dialog.ppost.value);
 	}
 }
 
@@ -129,7 +129,7 @@ function onBrowseJava(){
  	var file=null;
  	try{
 		file = Components.classes["@mozilla.org/file/local;1"]
-	           		.createInstance(Components.interfaces.nsILocalFile);
+	           		.createInstance(Components.interfaces.nsIFile);
 		file.initWithPath(dialog.javapath.value);
 		filePickerDlg.displayDirectory=file;
  	}catch(ex){

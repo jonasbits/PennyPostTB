@@ -33,7 +33,7 @@
 	<prefpane id="msGen" label="&ppost.opt.gensettings;"
 		image="chrome://ppost/skin/general.png">
 		<preferences>
-			<preference id="ppost.defalgo" name="ppost.defalgo"
+			<preference id="extensions.ppost.defalgo" name="extensions.ppost.defalgo"
 				type="string">
 			</preference>
 			<preference id="mail.headerScroll.maxheight"
@@ -45,11 +45,12 @@
 			<preference id="ppost.skip_date_verification2"
 				name="ppost.skip_date_verification2" type="bool">
 			</preference>
-			<preference id="ppost.addheaderscroll"
+			<!-- <preference id="ppost.addheaderscroll"
 				name="ppost.addheaderscroll" type="bool">
 			</preference>
-			<preference id="ppost.addsignature"
-				name="ppost.addsignature" type="bool">
+			-->
+			<preference id="extensions.ppost.addsignature"
+				name="extensions.ppost.addsignature" type="bool">
 			</preference>
 			<preference id="ppost.automarkjunk"
 				name="ppost.automarkjunk" type="bool">
@@ -57,7 +58,7 @@
 		</preferences>
 		<vbox>
 			<groupbox align="center">
-				<text class="text-link" value="&ppost.opt.verhist; : 1.5"
+				<text class="text-link" value="&ppost.opt.verhist; : 1.5.2"
 					onclick="window.opener.openURL('http://pennypost.sourceforge.net/TBVersionHistory');"
 					flex="1">
 				</text>
@@ -66,8 +67,8 @@
 				<caption label="&ppost.stamp.opt;"></caption>
 				<hbox align="center">
 					<label value="&ppost.opt.defalgo;:"></label>
-					<menulist preference="ppost.defalgo"
-						id="ppost.defalgo">
+					<menulist preference="extensions.ppost.defalgo"
+						id="extensions.ppost.defalgo">
 						<menupopup>
 							<menuitem label="MBound" value="mbound"></menuitem>
 							<menuitem label="HashCash"
@@ -108,7 +109,7 @@
 			</groupbox>
 			<groupbox>
 				<caption label="&ppost.opt.other;"></caption>
-				<hbox align="center">
+				<!-- <hbox align="center">
 					<checkbox id="ppost.addheaderscroll"
 						preference="ppost.addheaderscroll"
 						label="&ppost.opt.addheaderscroll;"
@@ -116,6 +117,7 @@
 						tooltiptext="&ppost.opt.addheaderscroll.tip;">
 					</checkbox>
 				</hbox>
+				-->
 				<hbox align="center">
 					<label value="&ppost.opt.other.paneht;:"></label>
 					<textbox preference="mail.headerScroll.maxheight"
@@ -123,8 +125,8 @@
 					</textbox>
 				</hbox>
 				<hbox align="center">
-					<checkbox id="ppost.addsignature"
-						preference="ppost.addsignature" label="&ppost.addsignature;"
+					<checkbox id="extensions.ppost.addsignature"
+						preference="extensions.ppost.addsignature" label="&ppost.addsignature;"
 						accesskey="&ppost.addsignature.key;"
 						tooltiptext="&ppost.addsignature.tip;">
 					</checkbox>
@@ -142,7 +144,7 @@
 	<prefpane id="msEmail" label="&ppost.opt.emailsetup.tab;"
 		image="chrome://ppost/skin/mail.png">
 		<preferences>
-			<preference id="ppost.myemail" name="ppost.myemail"
+			<preference id="extensions.ppost.myemail" name="extensions.ppost.myemail"
 				type="string">
 			</preference>
 		</preferences>
@@ -152,7 +154,7 @@
 				<caption label="&ppost.opt.emailsetup;"></caption>
 				<vbox>
 					<label value="&ppost.opt.emails;:"></label>
-					<textbox preference="ppost.myemail"></textbox>
+					<textbox preference="extensions.ppost.myemail"></textbox>
 					<separator class="thin" />
 					<label value="&ppost.opt.emails.help1;"></label>
 					<label value="&ppost.opt.emails.help2;"></label>
@@ -203,7 +205,7 @@
 			<preference id="ppost.javapath" name="ppost.javapath"
 				type="string">
 			</preference>
-			<preference id="ppost.path" name="ppost.path"
+			<preference id="extensions.ppost.path" name="extensions.ppost.path"
 				type="string">
 			</preference>
 		</preferences>
@@ -212,8 +214,8 @@
 				<caption label="&ppost.exprog.stampprog;"></caption>
 				<label value="&ppost.exprog.stampprog.box;:"></label>
 				<hbox>
-					<textbox preference="ppost.path" flex="1"
-						id="ppost.path.box" />
+					<textbox preference="extensions.ppost.path" flex="1"
+						id="extensions.ppost.path.box" />
 					<button id="detectStampProg"
 						label="&ppost.exprog.stampprog.detectbtn;"
 						oncommand="onDetectStampProgram();">
@@ -262,8 +264,8 @@
 	<prefpane id="msHashCash" label="&ppost.opt.hcsettings;"
 		image="chrome://ppost/skin/hc.png">
 		<preferences>
-			<preference id="ppost.hashcash.minvalue"
-				name="ppost.hashcash.minvalue" type="int">
+			<preference id="extensions.ppost.hashcash.minvalue"
+				name="extensions.ppost.hashcash.minvalue" type="int">
 			</preference>
 			<preference id="ppost.hashcash.mintvalue"
 				name="ppost.hashcash.mintvalue" type="int">
@@ -315,7 +317,7 @@
 					<hbox align="center">
 						<label value="&ppost.opt.stampmnver;:"></label>
 						<textbox size="2"
-							preference="ppost.hashcash.minvalue"
+							preference="extensions.ppost.hashcash.minvalue"
 							tooltiptext="&ppost.opt.stampmnver.note;">
 						</textbox>
 					</hbox>
@@ -333,8 +335,8 @@
 	<prefpane id="msMBound" label="&ppost.opt.mbsettings;"
 		image="chrome://ppost/skin/mb.png">
 		<preferences>
-			<preference id="ppost.mbound.minvalue"
-				name="ppost.mbound.minvalue" type="int">
+			<preference id="extensions.ppost.mbound.minvalue"
+				name="extensions.ppost.mbound.minvalue" type="int">
 			</preference>
 			<preference id="ppost.mbound.minpath"
 				name="ppost.mbound.minpath" type="int">
@@ -402,7 +404,7 @@
 					<hbox align="center">
 						<label value="&ppost.opt.stampmnver;:"></label>
 						<textbox size="2"
-							preference="ppost.mbound.minvalue"
+							preference="extensions.ppost.mbound.minvalue"
 							tooltiptext="&ppost.opt.stampmnver.note;">
 						</textbox>
 					</hbox>
@@ -435,7 +437,7 @@
 
 	<!--Non preference tags must be placed right at the end to avoid funny behaviour-->
 	<stringbundleset id="stringbundleset">
-		<stringbundle id="string-bundle"
+		<stringbundle id="ppost.string-bundle"
 			src="chrome://ppost/locale/ppost.properties" />
 	</stringbundleset>
 	<script type="application/x-javascript"

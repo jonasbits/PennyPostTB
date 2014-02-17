@@ -26,8 +26,9 @@ var sPrefs = null;
 // First get the preferences service
 //taken from example at https://developer.mozilla.org/en/Code_snippets/Preferences
 try {
-var sPrefs = Components.classes["@mozilla.org/preferences-service;1"]
-                    .getService(Components.interfaces.nsIPrefBranch);
+var sPrefs = Services.prefs;
+//var sPrefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+
 }
 catch (ex) {
  dump("failed to preferences services\n");
@@ -37,8 +38,8 @@ catch (ex) {
 //Uses: ppost.js
 
 //Globals
-//TB 24 stopped using "gIOService" and now we need to define it
-var gIOService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+//TB 24 stopped using "gIO Service" and now we need to use "Services.io" instead
+//var gIO Service = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
 var gAttachStamp=false;
 var gGenStamps='';
 var gStrBundle=null;
@@ -90,9 +91,9 @@ function msOnComposeLoad(){
   	observerService.addObserver(msMessageComposeOfflineObserver, "network:offline-status-changed", false);
   
   	// set the initial state of the stamp & send button
-  	msMessageComposeOfflineStateChanged(gIOService.offline);
+  	msMessageComposeOfflineStateChanged(Services.io.offline);
   	
-  	gStrBundle = document.getElementById("string-bundle");
+  	gStrBundle = document.getElementById("ppost.string-bundle");
   	
   	//Fix bug#1806927 - Mail stamped accidentially
   	gAttachStamp=false;
@@ -127,18 +128,18 @@ function msSendMsg() {
  * Format is x-stampprotocols: <algo1>/<max-supported-ver>/<min-cost>[/<other-params>][/<params>];<algo2>/<max-supported-ver>/<min-cost>[/<params>][/<other-params>] 
  */
 function getStampProtocolHeader(){
-	var mb = 'mbound:'+sPrefs.getIntPref('ppost.mbound.maxver')+':'+sPrefs.getIntPref('ppost.mbound.minvalue')+':'+sPrefs.getIntPref('ppost.mbound.minpath')+':'+sPrefs.getIntPref('ppost.mbound.maxpath');
-	var hc = 'hashcash:'+sPrefs.getIntPref('ppost.hashcash.maxver')+':'+sPrefs.getIntPref('ppost.hashcash.minvalue');
+	var mb = 'mbound:'+Services.prefs.getIntPref('ppost.mbound.maxver')+':'+Services.prefs.getIntPref('ppost.mbound.minvalue')+':'+Services.prefs.getIntPref('ppost.mbound.minpath')+':'+Services.prefs.getIntPref('ppost.mbound.maxpath');
+	var hc = 'hashcash:'+Services.prefs.getIntPref('ppost.hashcash.maxver')+':'+Services.prefs.getIntPref('ppost.hashcash.minvalue');
 	var rv='';
-	var defalgo=sPrefs.getCharPref('ppost.defalgo');
+	var defalgo=Services.prefs.getCharPref('extensions.ppost.defalgo');
 	if(defalgo==gStampTypes.S_HASHCASH){
-		if(sPrefs.getBoolPref('ppost.mbound.enable')){
+		if(Services.prefs.getBoolPref('ppost.mbound.enable')){
 			return 'x-stampprotocols: '+hc+';'+mb+"\r\n";
 		}else{
 			return 'x-stampprotocols: '+hc+"\r\n";
 		}
 	}else{
-		if(sPrefs.getBoolPref('ppost.hashcash.enable')){
+		if(Services.prefs.getBoolPref('ppost.hashcash.enable')){
 			return 'x-stampprotocols: '+mb+';'+hc+"\r\n";
 		}else{
 			return 'x-stampprotocols: '+mb+"\r\n";
@@ -184,7 +185,7 @@ function addPennyPostSignature(){
  */
 function StampSend(iAlgo, bIsSendNow){
 	//cant send now if we are offline
-	if (bIsSendNow && gIOService && gIOService.offline){
+	if (bIsSendNow && Services.io && Services.io.offline){
 		bIsSendNow=false;
 	}
 
@@ -198,7 +199,7 @@ function StampSend(iAlgo, bIsSendNow){
     //must be modal
     window.openDialog("chrome://ppost/content/stampProgress.xul",
                             "stampProgress", "chrome,modal,titlebar,centerscreen",
-                            msgCompFields, iAlgo, sPrefs, obRetVal);
+                            msgCompFields, iAlgo, Services.prefs, obRetVal);
     if (obRetVal.abort){
         return;
     }else{
@@ -206,7 +207,7 @@ function StampSend(iAlgo, bIsSendNow){
         gAttachStamp=true;
         
         //add ad signature to message body
-        var addSignature=sPrefs.getBoolPref('ppost.addsignature');
+        var addSignature=Services.prefs.getBoolPref('extensions.ppost.addsignature');
         if(addSignature){
         	addPennyPostSignature();
         }

@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//TB 24 stopped using "pref" and now we need to define it, the same with "gIOService"
-var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-var gIOService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);  
+//TB 24 stopped using "pref" and now we need to define it, 
+//TB 24 dont use "gIO Service" anymore, we need to use Services.io instead
+//var pr ef = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+//var gIO Service = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);  
  
 var gStampTypes={	UNKNOWN:0,
 					S_UNKNOWN:'none',
@@ -84,7 +85,7 @@ function getJarPath(){
 function readBack(handler, sFilePath, iLastMod, iWaitCount){
 	try{
 		var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
+	                     .createInstance(Components.interfaces.nsIFile);
 		file.initWithPath(sFilePath);
 		if(file.lastModifiedTime !=iLastMod || iWaitCount>180){
 			// read back output
@@ -179,7 +180,7 @@ function readFromProgram(pref, outputParams, handler)
 		
 		//locate process file
 		var processfile = Components.classes["@mozilla.org/file/local;1"]
-                     .createInstance(Components.interfaces.nsILocalFile);
+                     .createInstance(Components.interfaces.nsIFile);
         var args = new Array();
         if(useJava){
 			processfile.initWithPath(javapath);
@@ -222,7 +223,7 @@ function readFromProgram(pref, outputParams, handler)
 function runProcess(process, args, handler, sFilePath){
 	try{
 		var file = Components.classes["@mozilla.org/file/local;1"]
-	                     .createInstance(Components.interfaces.nsILocalFile);
+	                     .createInstance(Components.interfaces.nsIFile);
 		file.initWithPath(sFilePath);
 		
 		//save last file mod time

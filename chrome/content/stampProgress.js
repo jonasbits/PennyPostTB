@@ -68,7 +68,7 @@ function onLoad() {
         var iAlgo=window.arguments[1];
         sPrefs=window.arguments[2];
         retval=window.arguments[3];
-        gStrBundle = document.getElementById("string-bundle");
+        gStrBundle = document.getElementById("ppost.string-bundle");
         
         // Set global variables.
         gGenStamps='';
@@ -282,8 +282,8 @@ function StampSend(msgCompFields, iAlgo)
 	    		sDefAlgo=gStampTypes.S_MBOUND;
 	    		break;	  
 	    	default:
-				sDefAlgo=sPrefs.getCharPref('ppost.defalgo');
-				break;	    		  	
+			sDefAlgo=sPrefs.getCharPref('extensions.ppost.defalgo');
+			break;	    		  	
 	    }
 	    
 	    if(!sPrefs.getBoolPref('ppost.'+sDefAlgo+'.enable')){
@@ -294,7 +294,7 @@ function StampSend(msgCompFields, iAlgo)
 	    	getHCStamps();
 	    }else{
 	    	getMBStamps();
-	    	sPrefs.setCharPref('ppost.defalgo',gStampTypes.S_MBOUND);
+	    	sPrefs.setCharPref('extensions.ppost.defalgo',gStampTypes.S_MBOUND);
 	    }
     }catch(ex){
     	Components.utils.reportError(ex);

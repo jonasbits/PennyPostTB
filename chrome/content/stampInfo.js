@@ -102,7 +102,7 @@ function onLoad() {
         gobPref=window.arguments[1];
 		gsStampProtocolHeader=window.arguments[2]; //may be null
 		garyAllStampHeaders=window.arguments[3]; //may be null
-		gStrBundle = document.getElementById("string-bundle");
+		gStrBundle = document.getElementById("ppost.string-bundle");
 		
 		//init dialog elements
         dialog = new Object;

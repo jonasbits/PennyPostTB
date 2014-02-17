@@ -28,7 +28,7 @@
 	onload="onLoad()" onunload="onUnload()" buttons="cancel"
 	ondialogcancel="return onCancel();">
 	<stringbundleset id="stringbundleset">
-		<stringbundle id="string-bundle"
+		<stringbundle id="ppost.string-bundle"
 			src="chrome://ppost/locale/ppost.properties" />
 	</stringbundleset>
 	<script type="application/x-javascript"

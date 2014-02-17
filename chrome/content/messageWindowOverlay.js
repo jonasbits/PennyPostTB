@@ -38,7 +38,7 @@ addEventListener("messagepane-loaded", msHdrViewload,true);
  */
 function ensureStampExtraHeaders() {
 	try{
-		var extraHdrs = " " + pref.getCharPref("mailnews.headers.extraExpandedHeaders").toLowerCase() + " ";
+		var extraHdrs = " " + Services.prefs.getCharPref("mailnews.headers.extraExpandedHeaders").toLowerCase() + " ";
 		
 		var addHdr = [];
 		
@@ -51,14 +51,14 @@ function ensureStampExtraHeaders() {
 		if (addHdr.length > 0) {
 			extraHdrs += addHdr.join(" ");
 			extraHdrs = extraHdrs.replace(/^ */, "").replace(/ *$/, "");
-			pref.setCharPref("mailnews.headers.extraExpandedHeaders", extraHdrs);
+			Services.prefs.setCharPref("mailnews.headers.extraExpandedHeaders", extraHdrs);
 		}
 	}catch(ex){
 		//fails on TB 1.5 as mailnews.headers.extraExpandedHeaders is not available
 		Components.utils.reportError(ex);
 		Components.utils.reportError('Extraheaders setup failed, falling back to using all header mode.');
 		//fallback to using all headers
-		pref.setIntPref("mail.show_headers",2);
+		Services.prefs.setIntPref("mail.show_headers",2);
 		gEnabledAllHeaders=true;
 	}
 }
@@ -72,13 +72,14 @@ function msHdrViewload(){
 	    //ensure we get the headers we need (bug1788340)
 	    ensureStampExtraHeaders();
 	    
-	    //add scrollbars to header pane
+	    /* removed feature since v.1.5.2 (add scrollbars to header pane)
 	    if(pref.getBoolPref('ppost.addheaderscroll') || gEnabledAllHeaders){
 	    	document.getElementById('msgHeaderView').setAttribute("maxheight",pref.getIntPref('mail.headerScroll.maxheight'));
-	    	document.getElementById('msgHeaderView').style.overflow='auto';
+		document.getElementById('msgHeaderView').style.overflow='auto';
 	    }
-	    
-	    gStrBundle = document.getElementById("string-bundle");
+	    removed */
+
+	    gStrBundle = document.getElementById("ppost.string-bundle");
 	    
 	    //we are interested in end headers
 	    gMessageListeners.push({onEndHeaders:updateStamp,onStartHeaders:msNoop});
@@ -101,7 +102,7 @@ function displayStampInfo(){
 		var elmIcon=document.getElementById('ppostIcon');
         window.openDialog("chrome://ppost/content/stampInfo.xul",
                             "stampInfo", "chrome,modal,titlebar,centerscreen,resizable",
-                            gobStamp, pref, gsStampProtocolHeader,gAllStampHeaders);
+                            gobStamp, Services.prefs, gsStampProtocolHeader,gAllStampHeaders);
 }
 
 /**
@@ -114,10 +115,10 @@ function displayStampInfo(){
 function verifyStamp()
 {
 	//Read all prefs
-  	var hcminval=pref.getIntPref('ppost.hashcash.minvalue');
-  	var mbminval=pref.getIntPref('ppost.mbound.minvalue');
-  	var minpath=pref.getIntPref('ppost.mbound.minpath');
-  	var maxpath=pref.getIntPref('ppost.mbound.maxpath');
+  	var hcminval=Services.prefs.getIntPref('ppost.hashcash.minvalue');
+  	var mbminval=Services.prefs.getIntPref('ppost.mbound.minvalue');
+  	var minpath=Services.prefs.getIntPref('ppost.mbound.minpath');
+  	var maxpath=Services.prefs.getIntPref('ppost.mbound.maxpath');
   
   	var elmIcon=document.getElementById('ppostIcon');
   	
@@ -159,7 +160,7 @@ function verifyStamp()
 		      		elmIcon.src="chrome://ppost/skin/wrpostage.png";
 		      		elmIcon.tooltipText = gStrBundle.getString("error_invalidtip");
 		      		
-		      		var autojunk=pref.getBoolPref('ppost.automarkjunk');
+		      		var autojunk=Services.prefs.getBoolPref('ppost.automarkjunk');
 		      		//message is junk
 		            if(!SelectedMessagesAreJunk() && autojunk){
 		            	JunkSelectedMessages(true);
@@ -200,14 +201,14 @@ function verifyStamp()
 	  		return;
   	}
 
-  	readFromProgram(pref, cmd, listener);
+  	readFromProgram(Services.prefs, cmd, listener);
 }
 
 /**
  * Returns the list of emails that belong to the current user from the prefs 
  */
 function getMyValidEmails(){
-	var sEmailList = pref.getCharPref('ppost.myemail');
+	var sEmailList = Services.prefs.getCharPref('extensions.ppost.myemail');
 	
 	//get rid of any spaces between addresses
 	sEmailList = sEmailList.replace(/\s+/g,'');
@@ -216,7 +217,7 @@ function getMyValidEmails(){
 	sEmailList=sEmailList.replace(';',',');
 	
 	//save cleaned values back
-	pref.setCharPref("ppost.myemail", sEmailList);
+	Services.prefs.setCharPref("extensions.ppost.myemail", sEmailList);
 	
 	if(sEmailList.length==0){
 		var msg=gStrBundle.getString("error_config");
@@ -260,10 +261,10 @@ function localVerify(sHeaderDate){
 		}
 		
 		//check if stamp values match our preferences
-	  	var hcminval=pref.getIntPref('ppost.hashcash.minvalue');
-	  	var mbminval=pref.getIntPref('ppost.mbound.minvalue');
-	  	var minpath=pref.getIntPref('ppost.mbound.minpath');
-	  	var maxpath=pref.getIntPref('ppost.mbound.maxpath');
+	  	var hcminval=Services.prefs.getIntPref('ppost.hashcash.minvalue');
+	  	var mbminval=Services.prefs.getIntPref('ppost.mbound.minvalue');
+	  	var minpath=Services.prefs.getIntPref('ppost.mbound.minpath');
+	  	var maxpath=Services.prefs.getIntPref('ppost.mbound.maxpath');
   		
   		switch(gobStamp.iType){
   			case gStampTypes.HASHCASH:
@@ -282,7 +283,7 @@ function localVerify(sHeaderDate){
   				break;
   		}
   		
-  		var skipchkdate=pref.getBoolPref('ppost.skip_date_verification2');
+  		var skipchkdate=Services.prefs.getBoolPref('ppost.skip_date_verification2');
 
   		if(!skipchkdate){
 	  		
@@ -310,7 +311,7 @@ function localVerify(sHeaderDate){
 			localDt.setUTCMilliseconds(0);
 			
 			//check if stamp is recent
-			if(Math.round(Math.abs(gobStamp.dtGen-localDt)/86400000)>pref.getIntPref('ppost.maxagedays')){
+			if(Math.round(Math.abs(gobStamp.dtGen-localDt)/86400000)>Services.prefs.getIntPref('ppost.maxagedays')){
 				gobStamp.bError=true;
 				gobStamp.sError = gStrBundle.getString("error_stale");
 				return true;
@@ -427,10 +428,10 @@ function hidePpostHeaders(){
 	    for (index = 0; index < gPpostHdrList.length; index++) {
 	    	if (typeof(gExpandedHeaderView[gPpostHdrList[index]]) == "object") {
 	    		if (! gViewAllHeaders) {
-	        		gExpandedHeaderView[gPpostHdrList[index]].enclosingBox.setAttribute("hidden", true);
+	        		gExpandedHeaderView[gPpostHdrList[index]].enclosingRow.setAttribute("hidden", true);
 	        	}
 				else {
-					gExpandedHeaderView[gPpostHdrList[index]].enclosingBox.removeAttribute("hidden");
+					gExpandedHeaderView[gPpostHdrList[index]].enclosingRow.removeAttribute("hidden");
 	        	}
 	      	}
 	    }
@@ -457,17 +458,17 @@ function updateStamp(){
 	    var iStampType = gStampTypes.UNKNOWN;
 
 	    //center the image vertically in the visible header
-	    elmIcon.style.marginTop = ((pref.getIntPref('mail.headerScroll.maxheight')/2)-32)+"px";
+	    elmIcon.style.marginTop = ((Services.prefs.getIntPref('mail.headerScroll.maxheight')/2)-32)+"px";
 	    
 	    //try to get the header info
 	    var aryTokens = getCorrectHeader(gStampTypes.HASHCASH);
-	    if(aryTokens!=null && aryTokens.length!=0 && pref.getBoolPref('ppost.hashcash.enable')){
+	    if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('ppost.hashcash.enable')){
 	    	iStampType=gStampTypes.HASHCASH;
 	    	//for sake of completeness of a gAllStampHeaders
 	    	getCorrectHeader(gStampTypes.MBOUND);
 	    }else{
 	        aryTokens = getCorrectHeader(gStampTypes.MBOUND);
-	        if(aryTokens!=null && aryTokens.length!=0 && pref.getBoolPref('ppost.mbound.enable')){
+	        if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('ppost.mbound.enable')){
 	            iStampType=gStampTypes.MBOUND;
 	        }
 	    }
@@ -519,7 +520,7 @@ function updateStamp(){
 	    if(gobStamp.bError){
 	    	elmIcon.src = "chrome://ppost/skin/wrpostage.png";
 	    	elmIcon.tooltipText=gobStamp.sError;
-	    	var autojunk=pref.getBoolPref('ppost.automarkjunk');
+	    	var autojunk=Services.prefs.getBoolPref('ppost.automarkjunk');
 	    	//message is junk as the stamp is invalid
 			if(!SelectedMessagesAreJunk() && autojunk){
 		    	JunkSelectedMessages(true);
@@ -621,3 +622,4 @@ function parseStamp(sTokn, iTyp){
 	
 	return obRetVal;
 }
+

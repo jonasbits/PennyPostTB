@@ -25,9 +25,9 @@
 
   <script type="application/x-javascript" src="chrome://ppost/content/ppost.js" />
   <script type="application/x-javascript" src="chrome://ppost/content/messageWindowOverlay.js" />
-       <stringbundleset id="stringbundleset">
-   <stringbundle id="string-bundle" src="chrome://ppost/locale/ppost.properties"/>
- </stringbundleset>   
+   <stringbundleset id="stringbundleset">
+    <stringbundle id="ppost.string-bundle" src="chrome://ppost/locale/ppost.properties"/>
+   </stringbundleset>   
   <menupopup id="messageMenuPopup">
     <menuitem insertafter="menu_editMsgAsNew" label="&ppost.stampinfotab;" oncommand="displayStampInfo();" />
   </menupopup>

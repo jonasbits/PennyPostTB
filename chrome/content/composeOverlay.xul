@@ -31,7 +31,7 @@
 		src="chrome://ppost/content/composeOverlay.js">
 	</script>
 	<stringbundleset id="stringbundleset">
-		<stringbundle id="string-bundle"
+		<stringbundle id="ppost.string-bundle"
 			src="chrome://ppost/locale/ppost.properties" />
 	</stringbundleset>
 	<commandset id="composeCommands">
@@ -40,14 +40,11 @@
 		<command id="cmd_StampSendLater"
 			oncommand="StampSend(gStampTypes.UNKNOWN,false)" />
 		<command id="cmd_StampSendNowHC"
-			oncommand="StampSend(gStampTypes.HASHCASH,true)">
-		</command>
+			oncommand="StampSend(gStampTypes.HASHCASH,true)" />
 		<command id="cmd_StampSendNowMB"
-			oncommand="StampSend(gStampTypes.MBOUND,true)">
-		</command>
+			oncommand="StampSend(gStampTypes.MBOUND,true)" />
 		<command id="cmd_StampSendLaterHC"
-			oncommand="StampSend(gStampTypes.HASHCASH,false)">
-		</command>
+			oncommand="StampSend(gStampTypes.HASHCASH,false)" />
 		<command id="cmd_StampSendLaterMB"
 			oncommand="StampSend(gStampTypes.MBOUND,false)" />
 	</commandset>
