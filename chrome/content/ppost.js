@@ -21,8 +21,8 @@
 //TB 24 stopped using "pref" and now we need to define it, 
 //TB 24 dont use "gIO Service" anymore, we need to use Services.io instead
 //var pr ef = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-//var gIO Service = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);  
- 
+//var gIO Service = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService); 
+
 var gStampTypes={	UNKNOWN:0,
 					S_UNKNOWN:'none',
 					HASHCASH:1,
@@ -239,5 +239,40 @@ function runProcess(process, args, handler, sFilePath){
 			Components.utils.reportError('Ignored exception in running stamp program ' + ex);
 		}
 	}
+}
+
+var beingUninstalled;
+var beingDisabled;
+
+let listener = {
+  onUninstalling: function(addon) {
+    if (addon.id == "{3748ced8-ae28-48ac-a954-4bff3360f72c}") {
+      beingUninstalled = true;
+	//alert(beingUninstalled);
+	//var extraHdrs = Services.prefs.getCharPref("mailnews.headers.extraExpandedHeaders");
+	//alert(extraHdrs);
+	Services.prefs.setCharPref("mailnews.headers.extraExpandedHeaders", "");
+    }
+  },
+  onDisabling: function(addon) {
+    if (addon.id == "{3748ced8-ae28-48ac-a954-4bff3360f72c}") {
+      beingDisabled = true;
+	//alert(beingDisabled);
+	Services.prefs.setCharPref("mailnews.headers.extraExpandedHeaders", "");
+    }
+  },
+  onOperationCancelled: function(addon) {
+    if (addon.id == "{3748ced8-ae28-48ac-a954-4bff3360f72c}") {
+      beingUninstalled = (addon.pendingOperations & AddonManager.PENDING_UNINSTALL) != 0;
+	//alert(beingUninstalled);
+    }
+  }
+}
+
+try {
+  Components.utils.import("resource://gre/modules/AddonManager.jsm");
+  AddonManager.addAddonListener(listener);
+} catch (ex) {
+	//debug alert(ex);
 }
 	
