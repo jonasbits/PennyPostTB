@@ -41,12 +41,13 @@ function initDlg() {
 
         dialog.ppost = document.getElementById("extensions.ppost.path.box");
         dialog.javapath = document.getElementById("ppost.javapath.box");
-        dialog.hc_enable = document.getElementById("ppost.hashcash.enable");
-        dialog.mb_enable = document.getElementById("ppost.mbound.enable");
+        dialog.hc_enable = document.getElementById("extensions.ppost.hashcash.enable");
+        dialog.mb_enable = document.getElementById("extensions.ppost.mbound.enable");
         dialog.def_algo = document.getElementById("extensions.ppost.defalgo");
         
-        //prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-	prefs = Services.prefs;
+        prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	//Services.io and .prefs is not defined because this is a dialog box	
+	//prefs = Services.prefs;
     }catch(ex){
     	alert(gStrBundle.getString("windowloadfail") + " - " + ex);
     	window.close();
@@ -113,10 +114,17 @@ function onBrowseStampProgram(){
  		//ignore
  	}
  	var rv=filePickerDlg.show();
-	if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
-		dialog.ppost.value=filePickerDlg.file.path;
-		prefs.setCharPref('extensions.ppost.path', dialog.ppost.value);
-	}
+	try{	
+		if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
+			dialog.ppost.value=filePickerDlg.file.path;
+			prefs.setCharPref('extensions.ppost.path', dialog.ppost.value);
+		}
+	}catch(ex){
+		var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
+                                 .getService(Components.interfaces.nsIConsoleService);
+  		consoleService.logStringMessage(ex);		
+		//Components.utils.reportError(ex); doesnt work in a dialog box	
+	}	
 }
 
 /**

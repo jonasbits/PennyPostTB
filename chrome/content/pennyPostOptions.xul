@@ -267,22 +267,22 @@
 			<preference id="extensions.ppost.hashcash.minvalue"
 				name="extensions.ppost.hashcash.minvalue" type="int">
 			</preference>
-			<preference id="ppost.hashcash.mintvalue"
-				name="ppost.hashcash.mintvalue" type="int">
+			<preference id="extensions.ppost.hashcash.mintvalue"
+				name="extensions.ppost.hashcash.mintvalue" type="int">
 			</preference>
-			<preference id="ppost.hashcash.mintver"
-				name="ppost.hashcash.mintver" type="int">
+			<preference id="extensions.ppost.hashcash.mintver"
+				name="extensions.ppost.hashcash.mintver" type="int">
 			</preference>
-			<preference id="ppost.hashcash.maxver"
-				name="ppost.hashcash.maxver" type="int">
+			<preference id="extensions.ppost.hashcash.maxver"
+				name="extensions.ppost.hashcash.maxver" type="int">
 			</preference>
-			<preference id="ppost.hashcash.enable"
-				name="ppost.hashcash.enable" type="bool">
+			<preference id="extensions.ppost.hashcash.enable"
+				name="extensions.ppost.hashcash.enable" type="bool">
 			</preference>
 		</preferences>
 		<vbox>
-			<checkbox id="ppost.hashcash.enable"
-				preference="ppost.hashcash.enable" label="&ppost.mb.usehc;"
+			<checkbox id="extensions.ppost.hashcash.enable"
+				preference="extensions.ppost.hashcash.enable" label="&ppost.mb.usehc;"
 				accesskey="&ppost.mb.usehc.key;">
 			</checkbox>
 			<groupbox>
@@ -290,7 +290,7 @@
 				<hbox align="center">
 					<label value="&ppost.opt.stampvern;:"></label>
 					<textbox size="2"
-						preference="ppost.hashcash.mintver"
+						preference="extensions.ppost.hashcash.mintver"
 						tooltiptext="&ppost.opt.stampvern.note;">
 					</textbox>
 				</hbox>
@@ -299,7 +299,7 @@
 						value="&ppost.opt.stampval; (&ppost.opt.stampval.note;):">
 					</label>
 					<textbox size="2"
-						preference="ppost.hashcash.mintvalue">
+						preference="extensions.ppost.hashcash.mintvalue">
 					</textbox>
 				</hbox>
 			</groupbox>
@@ -309,7 +309,7 @@
 					<hbox align="center">
 						<label value="&ppost.opt.stampmxver;:"></label>
 						<textbox size="2"
-							preference="ppost.hashcash.maxver"
+							preference="extensions.ppost.hashcash.maxver"
 							tooltiptext="&ppost.opt.stampvern.note;">
 						</textbox>
 					</hbox>
@@ -344,32 +344,32 @@
 			<preference id="ppost.mbound.maxpath"
 				name="ppost.mbound.maxpath" type="int">
 			</preference>
-			<preference id="ppost.mbound.mintvalue"
-				name="ppost.mbound.mintvalue" type="int">
+			<preference id="extensions.ppost.mbound.mintvalue"
+				name="extensions.ppost.mbound.mintvalue" type="int">
 			</preference>
 			<preference id="ppost.mbound.mintpath"
 				name="ppost.mbound.mintpath" type="int">
 			</preference>
-			<preference id="ppost.mbound.mintver"
-				name="ppost.mbound.mintver" type="int">
+			<preference id="extensions.ppost.mbound.mintver"
+				name="extensions.ppost.mbound.mintver" type="int">
 			</preference>
-			<preference id="ppost.mbound.maxver"
-				name="ppost.mbound.maxver" type="int">
+			<preference id="extensions.ppost.mbound.maxver"
+				name="extensions.ppost.mbound.maxver" type="int">
 			</preference>
-			<preference id="ppost.mbound.enable"
-				name="ppost.mbound.enable" type="bool">
+			<preference id="extensions.ppost.mbound.enable"
+				name="extensions.ppost.mbound.enable" type="bool">
 			</preference>
 		</preferences>
 		<vbox>
-			<checkbox id="ppost.mbound.enable"
-				preference="ppost.mbound.enable" label="&ppost.mb.usembound;"
+			<checkbox id="extensions.ppost.mbound.enable"
+				preference="extensions.ppost.mbound.enable" label="&ppost.mb.usembound;"
 				accesskey="&ppost.mb.usembound.key;">
 			</checkbox>
 			<groupbox>
 				<caption label="&ppost.opt.stampgen;"></caption>
 				<hbox align="center">
 					<label value="&ppost.opt.stampvern;:"></label>
-					<textbox size="2" preference="ppost.mbound.mintver"
+					<textbox size="2" preference="extensions.ppost.mbound.mintver"
 						tooltiptext="&ppost.opt.stampvern.note;">
 					</textbox>
 				</hbox>
@@ -378,7 +378,7 @@
 						value="&ppost.opt.stampval; (&ppost.opt.stampval.note;):">
 					</label>
 					<textbox size="2"
-						preference="ppost.mbound.mintvalue">
+						preference="extensions.ppost.mbound.mintvalue">
 					</textbox>
 				</hbox>
 				<hbox align="center">
@@ -396,7 +396,7 @@
 					<hbox align="center">
 						<label value="&ppost.opt.stampmxver;:"></label>
 						<textbox size="2"
-							preference="ppost.mbound.maxver"
+							preference="extensions.ppost.mbound.maxver"
 							tooltiptext="&ppost.opt.stampvern.note;">
 						</textbox>
 					</hbox>

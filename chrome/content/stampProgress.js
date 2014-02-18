@@ -115,9 +115,9 @@ function getMBStamps()
 {
     var status=gStrBundle.getString("genstamp")+': ';
     dialog.status.setAttribute("value", status);
-    var mbval=sPrefs.getIntPref('ppost.mbound.mintvalue');
+    var mbval=sPrefs.getIntPref('extensions.ppost.mbound.mintvalue');
     var mbpath=sPrefs.getIntPref('ppost.mbound.mintpath');
-    var mbver=sPrefs.getIntPref('ppost.mbound.mintver');
+    var mbver=sPrefs.getIntPref('extensions.ppost.mbound.mintver');
     
     //args to be passed to ex program
     var args=new Array();
@@ -174,8 +174,8 @@ function getHCStamps()
 {
     var status=gStrBundle.getString("genstamp")+': ';
     dialog.status.setAttribute("value", status);
-    var hcval=sPrefs.getIntPref('ppost.hashcash.mintvalue');
-    var hcver=sPrefs.getIntPref('ppost.hashcash.mintver');
+    var hcval=sPrefs.getIntPref('extensions.ppost.hashcash.mintvalue');
+    var hcver=sPrefs.getIntPref('extensions.ppost.hashcash.mintver');
     
     //args to be passed to ex program
     var args=new Array();
@@ -286,7 +286,7 @@ function StampSend(msgCompFields, iAlgo)
 			break;	    		  	
 	    }
 	    
-	    if(!sPrefs.getBoolPref('ppost.'+sDefAlgo+'.enable')){
+	    if(!sPrefs.getBoolPref('extensions.ppost.'+sDefAlgo+'.enable')){
 	    	throw new Error(gStrBundle.getString("error_nosupport"));
 	    }
 	    

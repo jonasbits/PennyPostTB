@@ -115,8 +115,8 @@ function displayStampInfo(){
 function verifyStamp()
 {
 	//Read all prefs
-  	var hcminval=Services.prefs.getIntPref('ppost.hashcash.minvalue');
-  	var mbminval=Services.prefs.getIntPref('ppost.mbound.minvalue');
+  	var hcminval=Services.prefs.getIntPref('extensions.ppost.hashcash.minvalue');
+  	var mbminval=Services.prefs.getIntPref('extensions.ppost.mbound.minvalue');
   	var minpath=Services.prefs.getIntPref('ppost.mbound.minpath');
   	var maxpath=Services.prefs.getIntPref('ppost.mbound.maxpath');
   
@@ -261,8 +261,8 @@ function localVerify(sHeaderDate){
 		}
 		
 		//check if stamp values match our preferences
-	  	var hcminval=Services.prefs.getIntPref('ppost.hashcash.minvalue');
-	  	var mbminval=Services.prefs.getIntPref('ppost.mbound.minvalue');
+	  	var hcminval=Services.prefs.getIntPref('extensions.ppost.hashcash.minvalue');
+	  	var mbminval=Services.prefs.getIntPref('extensions.ppost.mbound.minvalue');
 	  	var minpath=Services.prefs.getIntPref('ppost.mbound.minpath');
 	  	var maxpath=Services.prefs.getIntPref('ppost.mbound.maxpath');
   		
@@ -462,13 +462,13 @@ function updateStamp(){
 	    
 	    //try to get the header info
 	    var aryTokens = getCorrectHeader(gStampTypes.HASHCASH);
-	    if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('ppost.hashcash.enable')){
+	    if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('extensions.ppost.hashcash.enable')){
 	    	iStampType=gStampTypes.HASHCASH;
 	    	//for sake of completeness of a gAllStampHeaders
 	    	getCorrectHeader(gStampTypes.MBOUND);
 	    }else{
 	        aryTokens = getCorrectHeader(gStampTypes.MBOUND);
-	        if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('ppost.mbound.enable')){
+	        if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('extensons.ppost.mbound.enable')){
 	            iStampType=gStampTypes.MBOUND;
 	        }
 	    }
