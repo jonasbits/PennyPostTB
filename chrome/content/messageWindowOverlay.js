@@ -468,7 +468,7 @@ function updateStamp(){
 	    	getCorrectHeader(gStampTypes.MBOUND);
 	    }else{
 	        aryTokens = getCorrectHeader(gStampTypes.MBOUND);
-	        if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('extensons.ppost.mbound.enable')){
+	        if(aryTokens!=null && aryTokens.length!=0 && Services.prefs.getBoolPref('extensions.ppost.mbound.enable')){
 	            iStampType=gStampTypes.MBOUND;
 	        }
 	    }
