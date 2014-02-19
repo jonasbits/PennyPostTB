@@ -16,12 +16,11 @@
 		<em:homepageURL>
 			http://pennypost.sourceforge.net
 		</em:homepageURL>
-		<em:iconURL>chrome://ppost/skin/mss.png</em:iconURL>
+		<em:iconURL>chrome://ppost/skin/postage.png</em:iconURL>
 		<em:aboutURL>chrome://ppost/content/about.xul</em:aboutURL>
 		<em:optionsURL>
 			chrome://ppost/content/pennyPostOptions.xul
 		</em:optionsURL>
-		<!--secure updates? <em:updateURL>http://pennypost.sourceforge.net/update.rdf</em:updateURL>-->
 		<em:targetApplication>
 			<!-- Thunderbird -->
 			<Description>
