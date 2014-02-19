@@ -22,6 +22,6 @@ while getopts "vc" opt; do
   esac
 done
 
-zip -x $EXCLUDE "*.*~" "*.sh" "*.xpi" "*.md" "*.zip" -r $OUT * 
+zip -x $EXCLUDE "*~" "*.*~" "*.sh" "*.xpi" "*.md" "*.zip" -r $OUT * 
 cp $OUT "$OUT"".xpi"
 echo $MESSAGE
