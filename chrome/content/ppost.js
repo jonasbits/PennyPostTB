@@ -143,14 +143,14 @@ function readFromProgram(pref, outputParams, handler)
 {
 	try{
 		var javapath=null;
-		var path=pref.getCharPref('ppost.path');
-		var useJava=pref.getBoolPref('ppost.usejavalaunch');
+		var path=pref.getCharPref('extensions.ppost.path');
+		var useJava=pref.getBoolPref('extensions.ppost.usejavalaunch');
 		if(useJava){
 			if(path.length==0){
 				path=getJarPath();
-				pref.setCharPref('ppost.path',path);
+				pref.setCharPref('extensions.ppost.path',path);
 			}
-			javapath=pref.getCharPref('ppost.javapath');
+			javapath=pref.getCharPref('extensions.ppost.javapath');
 		}
 		
 		if((useJava && javapath.length==0) || path.length==0){

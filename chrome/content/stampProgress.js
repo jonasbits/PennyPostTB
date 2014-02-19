@@ -116,7 +116,7 @@ function getMBStamps()
     var status=gStrBundle.getString("genstamp")+': ';
     dialog.status.setAttribute("value", status);
     var mbval=sPrefs.getIntPref('extensions.ppost.mbound.mintvalue');
-    var mbpath=sPrefs.getIntPref('ppost.mbound.mintpath');
+    var mbpath=sPrefs.getIntPref('extensions.ppost.mbound.mintpath');
     var mbver=sPrefs.getIntPref('extensions.ppost.mbound.mintver');
     
     //args to be passed to ex program

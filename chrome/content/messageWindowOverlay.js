@@ -117,8 +117,8 @@ function verifyStamp()
 	//Read all prefs
   	var hcminval=Services.prefs.getIntPref('extensions.ppost.hashcash.minvalue');
   	var mbminval=Services.prefs.getIntPref('extensions.ppost.mbound.minvalue');
-  	var minpath=Services.prefs.getIntPref('ppost.mbound.minpath');
-  	var maxpath=Services.prefs.getIntPref('ppost.mbound.maxpath');
+  	var minpath=Services.prefs.getIntPref('extensions.ppost.mbound.minpath');
+  	var maxpath=Services.prefs.getIntPref('extensions.ppost.mbound.maxpath');
   
   	var elmIcon=document.getElementById('ppostIcon');
   	
@@ -160,7 +160,7 @@ function verifyStamp()
 		      		elmIcon.src="chrome://ppost/skin/wrpostage.png";
 		      		elmIcon.tooltipText = gStrBundle.getString("error_invalidtip");
 		      		
-		      		var autojunk=Services.prefs.getBoolPref('ppost.automarkjunk');
+		      		var autojunk=Services.prefs.getBoolPref('extensions.ppost.automarkjunk');
 		      		//message is junk
 		            if(!SelectedMessagesAreJunk() && autojunk){
 		            	JunkSelectedMessages(true);
@@ -263,8 +263,8 @@ function localVerify(sHeaderDate){
 		//check if stamp values match our preferences
 	  	var hcminval=Services.prefs.getIntPref('extensions.ppost.hashcash.minvalue');
 	  	var mbminval=Services.prefs.getIntPref('extensions.ppost.mbound.minvalue');
-	  	var minpath=Services.prefs.getIntPref('ppost.mbound.minpath');
-	  	var maxpath=Services.prefs.getIntPref('ppost.mbound.maxpath');
+	  	var minpath=Services.prefs.getIntPref('extensions.ppost.mbound.minpath');
+	  	var maxpath=Services.prefs.getIntPref('extensions.ppost.mbound.maxpath');
   		
   		switch(gobStamp.iType){
   			case gStampTypes.HASHCASH:
@@ -283,7 +283,7 @@ function localVerify(sHeaderDate){
   				break;
   		}
   		
-  		var skipchkdate=Services.prefs.getBoolPref('ppost.skip_date_verification2');
+  		var skipchkdate=Services.prefs.getBoolPref('extensions.ppost.skip_date_verification2');
 
   		if(!skipchkdate){
 	  		
@@ -311,7 +311,7 @@ function localVerify(sHeaderDate){
 			localDt.setUTCMilliseconds(0);
 			
 			//check if stamp is recent
-			if(Math.round(Math.abs(gobStamp.dtGen-localDt)/86400000)>Services.prefs.getIntPref('ppost.maxagedays')){
+			if(Math.round(Math.abs(gobStamp.dtGen-localDt)/86400000)>Services.prefs.getIntPref('extensions.ppost.maxagedays')){
 				gobStamp.bError=true;
 				gobStamp.sError = gStrBundle.getString("error_stale");
 				return true;
@@ -520,7 +520,7 @@ function updateStamp(){
 	    if(gobStamp.bError){
 	    	elmIcon.src = "chrome://ppost/skin/wrpostage.png";
 	    	elmIcon.tooltipText=gobStamp.sError;
-	    	var autojunk=Services.prefs.getBoolPref('ppost.automarkjunk');
+	    	var autojunk=Services.prefs.getBoolPref('extensions.ppost.automarkjunk');
 	    	//message is junk as the stamp is invalid
 			if(!SelectedMessagesAreJunk() && autojunk){
 		    	JunkSelectedMessages(true);

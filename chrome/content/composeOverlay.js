@@ -128,7 +128,7 @@ function msSendMsg() {
  * Format is x-stampprotocols: <algo1>/<max-supported-ver>/<min-cost>[/<other-params>][/<params>];<algo2>/<max-supported-ver>/<min-cost>[/<params>][/<other-params>] 
  */
 function getStampProtocolHeader(){
-	var mb = 'mbound:'+Services.prefs.getIntPref('extensions.ppost.mbound.maxver')+':'+Services.prefs.getIntPref('extensions.ppost.mbound.minvalue')+':'+Services.prefs.getIntPref('ppost.mbound.minpath')+':'+Services.prefs.getIntPref('ppost.mbound.maxpath');
+	var mb = 'mbound:'+Services.prefs.getIntPref('extensions.ppost.mbound.maxver')+':'+Services.prefs.getIntPref('extensions.ppost.mbound.minvalue')+':'+Services.prefs.getIntPref('extensions.ppost.mbound.minpath')+':'+Services.prefs.getIntPref('extensions.ppost.mbound.maxpath');
 	var hc = 'hashcash:'+Services.prefs.getIntPref('extensions.ppost.hashcash.maxver')+':'+Services.prefs.getIntPref('extensions.ppost.hashcash.minvalue');
 	var rv='';
 	var defalgo=Services.prefs.getCharPref('extensions.ppost.defalgo');

@@ -40,7 +40,7 @@ function initDlg() {
         dialog = new Object;
 
         dialog.ppost = document.getElementById("extensions.ppost.path.box");
-        dialog.javapath = document.getElementById("ppost.javapath.box");
+        dialog.javapath = document.getElementById("extensions.ppost.javapath.box");
         dialog.hc_enable = document.getElementById("extensions.ppost.hashcash.enable");
         dialog.mb_enable = document.getElementById("extensions.ppost.mbound.enable");
         dialog.def_algo = document.getElementById("extensions.ppost.defalgo");
@@ -146,7 +146,7 @@ function onBrowseJava(){
  	var rv=filePickerDlg.show();
 	if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
 		dialog.javapath.value=filePickerDlg.file.path;
-		prefs.setCharPref('ppost.javapath', dialog.javapath.value);
+		prefs.setCharPref('extensions.ppost.javapath', dialog.javapath.value);
 	}
 }
 

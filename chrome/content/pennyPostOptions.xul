@@ -39,11 +39,11 @@
 			<preference id="mail.headerScroll.maxheight"
 				name="mail.headerScroll.maxheight" type="int">
 			</preference>
-			<preference id="ppost.maxagedays" name="ppost.maxagedays"
+			<preference id="extensions.ppost.maxagedays" name="extensions.ppost.maxagedays"
 				type="int">
 			</preference>
-			<preference id="ppost.skip_date_verification2"
-				name="ppost.skip_date_verification2" type="bool">
+			<preference id="extensions.ppost.skip_date_verification2"
+				name="extensions.ppost.skip_date_verification2" type="bool">
 			</preference>
 			<!-- <preference id="ppost.addheaderscroll"
 				name="ppost.addheaderscroll" type="bool">
@@ -52,8 +52,8 @@
 			<preference id="extensions.ppost.addsignature"
 				name="extensions.ppost.addsignature" type="bool">
 			</preference>
-			<preference id="ppost.automarkjunk"
-				name="ppost.automarkjunk" type="bool">
+			<preference id="extensions.ppost.automarkjunk"
+				name="extensions.ppost.automarkjunk" type="bool">
 			</preference>
 		</preferences>
 		<vbox>
@@ -79,7 +79,7 @@
 				</hbox>
 				<hbox align="center">
 					<label value="&ppost.opt.stamp_age_label;:"></label>
-					<menulist preference="ppost.maxagedays"
+					<menulist preference="extensions.ppost.maxagedays"
 						tooltiptext="&ppost.opt.stamp_age_tip;">
 						<menupopup>
 							<menuitem label="1" value="1"></menuitem>
@@ -91,15 +91,15 @@
 					</menulist>
 				</hbox>
 				<hbox align="center">
-					<checkbox id="ppost.automarkjunk"
-						preference="ppost.automarkjunk" label="&ppost.automarkjunk;"
+					<checkbox id="extensions.ppost.automarkjunk"
+						preference="extensions.ppost.automarkjunk" label="&ppost.automarkjunk;"
 						accesskey="&ppost.automarkjunk.key;"
 						tooltiptext="&ppost.automarkjunk.tip;">
 					</checkbox>
 				</hbox>
 				<hbox align="center">
-					<checkbox id="ppost.skip_date_verification2"
-						preference="ppost.skip_date_verification2"
+					<checkbox id="extensions.ppost.skip_date_verification2"
+						preference="extensions.ppost.skip_date_verification2"
 						label="&ppost.opt.skipdateveri;"
 						accesskey="&ppost.opt.skipdateveri.key;"
 						tooltiptext="&ppost.opt.skipdateveri.tip;">
@@ -199,10 +199,10 @@
 	<prefpane id="msExProgPaths" label="&ppost.opt.exprog;"
 		image="chrome://ppost/skin/exprog.png">
 		<preferences>
-			<preference id="ppost.usejavalaunch"
-				name="ppost.usejavalaunch" type="bool">
+			<preference id="extensions.ppost.usejavalaunch"
+				name="extensions.ppost.usejavalaunch" type="bool">
 			</preference>
-			<preference id="ppost.javapath" name="ppost.javapath"
+			<preference id="extensions.ppost.javapath" name="extensions.ppost.javapath"
 				type="string">
 			</preference>
 			<preference id="extensions.ppost.path" name="extensions.ppost.path"
@@ -234,15 +234,15 @@
 			</groupbox>
 			<groupbox>
 				<caption label="&ppost.exprog.javasetup;"></caption>
-				<checkbox id="ppost.usejavalaunch"
-					preference="ppost.usejavalaunch" label="&ppost.exprog.usejava;"
+				<checkbox id="extensions.ppost.usejavalaunch"
+					preference="extensions.ppost.usejavalaunch" label="&ppost.exprog.usejava;"
 					accesskey="&ppost.exprog.usejava.key;"
 					tooltiptext="&ppost.exprog.usejava.tip;">
 				</checkbox>
 				<label value="&ppost.exprog.javapath;"></label>
 				<hbox>
-					<textbox preference="ppost.javapath" flex="1"
-						id="ppost.javapath.box">
+					<textbox preference="extensions.ppost.javapath" flex="1"
+						id="extensions.ppost.javapath.box">
 					</textbox>
 					<button label="..." id="browseJava"
 						oncommand="onBrowseJava();">
@@ -338,17 +338,17 @@
 			<preference id="extensions.ppost.mbound.minvalue"
 				name="extensions.ppost.mbound.minvalue" type="int">
 			</preference>
-			<preference id="ppost.mbound.minpath"
-				name="ppost.mbound.minpath" type="int">
+			<preference id="extensions.ppost.mbound.minpath"
+				name="extensions.ppost.mbound.minpath" type="int">
 			</preference>
-			<preference id="ppost.mbound.maxpath"
-				name="ppost.mbound.maxpath" type="int">
+			<preference id="extensions.ppost.mbound.maxpath"
+				name="extensions.ppost.mbound.maxpath" type="int">
 			</preference>
 			<preference id="extensions.ppost.mbound.mintvalue"
 				name="extensions.ppost.mbound.mintvalue" type="int">
 			</preference>
-			<preference id="ppost.mbound.mintpath"
-				name="ppost.mbound.mintpath" type="int">
+			<preference id="extensions.ppost.mbound.mintpath"
+				name="extensions.ppost.mbound.mintpath" type="int">
 			</preference>
 			<preference id="extensions.ppost.mbound.mintver"
 				name="extensions.ppost.mbound.mintver" type="int">
@@ -386,7 +386,7 @@
 						value="&ppost.opt.mb.stampdepth; (&ppost.opt.mb.stampdepth.note;):">
 					</label>
 					<textbox size="4"
-						preference="ppost.mbound.mintpath">
+						preference="extensions.ppost.mbound.mintpath">
 					</textbox>
 				</hbox>
 			</groupbox>
@@ -415,7 +415,7 @@
 					<hbox align="center">
 						<label value="&ppost.opt.mb.stampmndepth;:"></label>
 						<textbox size="4"
-							preference="ppost.mbound.minpath"
+							preference="extensions.ppost.mbound.minpath"
 							tooltiptext="&ppost.opt.mb.stampmndepth.note;">
 						</textbox>
 					</hbox>
@@ -423,7 +423,7 @@
 					<hbox align="center">
 						<label value="&ppost.opt.mb.stampmxdepth;:"></label>
 						<textbox size="4"
-							preference="ppost.mbound.maxpath"
+							preference="extensions.ppost.mbound.maxpath"
 							tooltiptext="&ppost.opt.mb.stampmxdepth.note;">
 						</textbox>
 					</hbox>
