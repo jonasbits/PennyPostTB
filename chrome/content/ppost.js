@@ -37,7 +37,7 @@ var gStampTypes={	UNKNOWN:0,
  */
 function getJarPath(){
 	try{
-		var eid = "{3748ced8-ae28-48ac-a954-4bff3360f72c}";
+		var eid = "{3748ced8-ae28-48ac-a954-4bff3360f72d}";
 		/**var ext = Components.classes["@mozilla.org/extensions/manager;1"]
 	                    .getService(Components.interfaces.nsIExtensionManager)
 	                    .getInstallLocation(eid)
