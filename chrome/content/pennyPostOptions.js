@@ -86,13 +86,19 @@ function onTestRegEx(){
  * Tries to populate the path of ppost.jar automatically
  */
 function onDetectStampProgram(){
-	var jarpath=getJarPath();
-	if(jarpath==''){
+	getJarPath(function(data){
+		var jarpath=data;
+		dialog.ppost.value=jarpath;	
+		prefs.setCharPref('extensions.ppost.path', dialog.ppost.value);
+		});
+
+	//var jarpath=getJarPath();
+	/*if(jarpath==''){
 		alert(gStrBundle.getString("jarpathdetectfail"));
 	}else{
 		dialog.ppost.value=jarpath;
 		prefs.setCharPref('extensions.ppost.path', dialog.ppost.value);
-	}
+	}*/
 }
 
 /**

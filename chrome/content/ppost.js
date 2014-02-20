@@ -35,7 +35,7 @@ var gStampTypes={	UNKNOWN:0,
  * Tries to get the path of ppost.jar relative to the extension folder
  * This jar is in the lib folder of the extension folder
  */
-function getJarPath(){
+function getJarPath(callback){
 	try{
 		var eid = "{3748ced8-ae28-48ac-a954-4bff3360f72d}";
 		/**var ext = Components.classes["@mozilla.org/extensions/manager;1"]
@@ -49,7 +49,7 @@ function getJarPath(){
 		Components.utils.import("resource://gre/modules/AddonManager.jsm");  
 			AddonManager.getAddonByID(eid, function(addon) {
 				addonLocation = addon.getResourceURI("/lib/ppost.jar").QueryInterface(Components.interfaces.nsIFileURL).file.path;
-				alert("Copy this " + addonLocation);
+				callback(addonLocation);
 			}); //end of AddonManager async call
 	    /*if(!ext.exists()){
 	    	throw new Error('ppost.jar not found in '+ext.path);
@@ -59,9 +59,9 @@ function getJarPath(){
 	}catch(ex){
 		Components.utils.reportError(ex);
 		//ignore
-		return '';
+		//return '';
 	}
-	return "Copy path from popup dialog";
+	//return "Copy path from popup dialog";
 }
 
 /**
