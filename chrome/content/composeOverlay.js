@@ -116,8 +116,13 @@ function msSendMsg() {
     if(gAttachStamp){
         var msgCompFields = gMsgCompose.compFields;
         //add the pre-generated headers
-        msgCompFields.otherRandomHeaders+=gGenStamps+getStampProtocolHeader();
-        
+        //msgCompFields.otherRandomHeaders+=gGenStamps+getStampProtocolHeader();
+	msgCompFields.setHeader("X-Stampprotocols", getStampProtocolHeader() );
+        if( gGenStamps.slice(0,10)==="x-hashcash" ) {
+         msgCompFields.setHeader("X-Hashcash",       gGenStamps.slice(12) );
+        } else {
+	 msgCompFields.setHeader("X-Hashcash",       gGenStamps.slice(10) );
+	}
   		//Fix bug#1806927 - Mail stamped accidentially
   		gAttachStamp=false;
     }
@@ -134,15 +139,15 @@ function getStampProtocolHeader(){
 	var defalgo=Services.prefs.getCharPref('extensions.ppost.defalgo');
 	if(defalgo==gStampTypes.S_HASHCASH){
 		if(Services.prefs.getBoolPref('extensions.ppost.mbound.enable')){
-			return 'x-stampprotocols: '+hc+';'+mb+"\r\n";
+			return hc + ';' + mb;
 		}else{
-			return 'x-stampprotocols: '+hc+"\r\n";
+			return hc;
 		}
 	}else{
 		if(Services.prefs.getBoolPref('extensions.ppost.hashcash.enable')){
-			return 'x-stampprotocols: '+mb+';'+hc+"\r\n";
+			return mb + ';' + hc;
 		}else{
-			return 'x-stampprotocols: '+mb+"\r\n";
+			return mb;
 		}
 	}
 }
@@ -206,7 +211,7 @@ function StampSend(iAlgo, bIsSendNow){
         gGenStamps=obRetVal.stamps;
         gAttachStamp=true;
         
-        //add ad signature to message body
+        //add promote signature to message body
         var addSignature=Services.prefs.getBoolPref('extensions.ppost.addsignature');
         if(addSignature){
         	addPennyPostSignature();
