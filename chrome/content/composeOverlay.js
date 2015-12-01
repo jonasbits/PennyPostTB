@@ -121,7 +121,7 @@ function msSendMsg() {
         if( gGenStamps.slice(0,10)==="x-hashcash" ) {
          msgCompFields.setHeader("X-Hashcash",       gGenStamps.slice(12) );
         } else {
-	 msgCompFields.setHeader("X-Hashcash",       gGenStamps.slice(10) );
+	 msgCompFields.setHeader("X-Mbound",         gGenStamps.slice(10) );
 	}
   		//Fix bug#1806927 - Mail stamped accidentially
   		gAttachStamp=false;
