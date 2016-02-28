@@ -58,7 +58,7 @@
 		</preferences>
 		<vbox>
 			<groupbox align="center">
-				<text class="text-link" value="&ppost.opt.verhist; : 1.5.3"
+				<text class="text-link" value="&ppost.opt.verhist; : 1.5.4"
 					onclick="window.opener.openURL('http://pennypost.sourceforge.net/TBVersionHistory');"
 					flex="1">
 				</text>
